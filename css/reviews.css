@@ -1,0 +1,65 @@
+
+.star-wrap{
+    background: yellow;
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    gap: 10px;
+}
+
+.star-wrap input{
+    display: none;
+}
+
+
+.star-wrap label{
+    position: relative;
+    display: inline-block;
+    color: #888;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    cursor:pointer;
+}
+.star-wrap label:before{
+    content: "*";
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    color: inherit;
+    font-size: 1.85rem;
+    cursor:pointer;
+    line-height:40px;
+}
+
+.star-wrap label:after{
+    content: "";
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    width:40px;
+    height:40px;
+    display: inline-block;
+    border-radius: 50%;
+    z-index:1;
+}
+
+.star-wrap label.active:after{
+    animation: pulse 1000ms ease-in-out;
+
+}
+
+@keyframes pulse{
+    0%{
+        background: #6441a5;
+        opacity: 0;
+        transform: translate(-50%,-50%) scale(0);
+    }
+    100%{
+        background: #6441a5;
+        opacity: 0;
+        transform: translate(-50%,-50%) scale(1);
+    }
+}
