@@ -42,30 +42,37 @@ $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <?php require 'project_header.php';
         title_bar("") ?>
         <h1>Reviews</h1>
-        <form method="post" class="login-form">
-            <label for="reviewemail">Email</label>
-            <input type="text" id="reviewemail" name="reviewemail" placeholder="Please add your email" required>
-            <label for="subject">Subject</label>
-            <input type="text" id="subject" name="subject" placeholder="Insert the subject">
+        <form method="post" class="review-form">
+            <div class="email-subject">
+                <label for="reviewemail">Email</label>
+                <input type="text" id="reviewemail" name="reviewemail" placeholder="Please add your email" required>
+                <label for="subject">Subject</label>
+                <input type="text" id="subject" name="subject" placeholder="Insert the subject">
+            </div>
+
             <div class="star-wrap">
-                <input type="radio" id="st-5" name="star_radio" value="5" required>
-                <label for="st-5" title="5 stars">★</label>
+                <fieldset class="star-wrap">
+                    <legend>Star rating</legend>
 
-                <input type="radio" id="st-4" name="star_radio" value="4">
-                <label for="st-4" title="4 stars">★</label>
+                    <input type="radio" id="st-5" name="star_radio" value="5">
+                    <label for="st-5">★</label>
 
-                <input type="radio" id="st-3" name="star_radio" value="3">
-                <label for="st-3" title="3 stars">★</label>
+                    <input type="radio" id="st-4" name="star_radio" value="4">
+                    <label for="st-4">★</label>
 
-                <input type="radio" id="st-2" name="star_radio" value="2">
-                <label for="st-2" title="2 stars">★</label>
+                    <input type="radio" id="st-3" name="star_radio" value="3">
+                    <label for="st-3">★</label>
 
-                <input type="radio" id="st-1" name="star_radio" value="1">
-                <label for="st-1" title="1 star">★</label>
+                    <input type="radio" id="st-2" name="star_radio" value="2">
+                    <label for="st-2">★</label>
+
+                    <input type="radio" id="st-1" name="star_radio" value="1" required>
+                    <label for="st-1">★</label>
+                </fieldset>
             </div>
             <label for="review">review</label>
             <textarea type="text" id="review" name="review" placeholder="Please add your review" required></textarea>
-            <input type="submit">
+            <button type="submit">post review</button>
         </form>
         <table border="1" class="reviews-table">
 
