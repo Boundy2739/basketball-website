@@ -32,7 +32,7 @@ if (isset($_SESSION['authorized']) && $_SESSION['authorized'] === TRUE){
 <html>
     <head>
     <title>Stock</title>
-    <link rel="stylesheet" href="css/cart.css">
+    <link rel="stylesheet" href="css/style.css">
     </head>
     <body>
     <div class="container">

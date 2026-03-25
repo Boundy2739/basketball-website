@@ -38,11 +38,18 @@ if (isset($_SESSION['authorized']) && $_SESSION['authorized'] === TRUE){
     $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
     ?>
 <html>
-    <head></head><body>
+    <head>
+        <link rel="stylesheet" href="css/style.css">
+    </head><body>
 
-
+    <div class="container">
     <table border="1">
-
+    <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Password</th>
+            <th>Options</th>
+        </tr>
     <?php
     foreach ( $rows as $row ) {
         echo "<tr><td>";
@@ -57,11 +64,12 @@ if (isset($_SESSION['authorized']) && $_SESSION['authorized'] === TRUE){
     }   
 ?>
     </table>
+    </div>
 
 
 
     <p>Add A New User</p>
-    <form method="post">
+    <form method="post" class="login-form">
     <p>Name:
     <input type="text" name="name" size="40"></p>
     <p>Email:

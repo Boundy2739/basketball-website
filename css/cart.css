@@ -123,9 +123,6 @@ a.btn2  {
 .form-container input{
     margin-bottom:20px ;
 }
-.form-container button{
-
-}
 /* Responsive */
 @media (max-width: 768px) {
     .container table,

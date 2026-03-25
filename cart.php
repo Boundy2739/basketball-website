@@ -3,14 +3,16 @@ session_start();
 require 'project_header.php';
 title_bar("Cart");
 $total = array();
-if(!empty($_SESSION['cart'])){
-    foreach($_SESSION['cart'] as $i){
-        $total[] = $i['totalprice'];
-}
-$total = array_sum($total);
 
+if (!empty($_SESSION['cart'])) {
+    foreach ($_SESSION['cart'] as $i) {
+        $total[] = $i['totalprice'];
+    }
+
+    $total = array_sum($total);
+
+    print_r($_SESSION['cart']); // debug only if cart exists
 }
-print_r($_SESSION['cart']);
 ?>
 
 
