@@ -41,18 +41,18 @@ $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <section id="container">
         <?php require 'project_header.php';
         title_bar("") ?>
-        <h1>Reviews</h1>
+        <h1 class="review-title">Leave a review!</h1>
         <form method="post" class="review-form">
             <div class="email-subject">
-                <label for="reviewemail">Email</label>
+                <label for="reviewemail">Email:</label>
                 <input type="text" id="reviewemail" name="reviewemail" placeholder="Please add your email" required>
-                <label for="subject">Subject</label>
+                <label for="subject">Subject:</label>
                 <input type="text" id="subject" name="subject" placeholder="Insert the subject">
             </div>
 
-            <div class="star-wrap">
+            <div class="star-div">
                 <fieldset class="star-wrap">
-                    <legend>Star rating</legend>
+                    <legend>Rate us!</legend>
 
                     <input type="radio" id="st-5" name="star_radio" value="5">
                     <label for="st-5">★</label>
@@ -70,10 +70,17 @@ $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <label for="st-1">★</label>
                 </fieldset>
             </div>
-            <label for="review">review</label>
-            <textarea type="text" id="review" name="review" placeholder="Please add your review" required></textarea>
+            <div class="textarea-div">
+                <label for="review">Your reveiw:</label>
+                <textarea type="text" id="review" name="review" placeholder="Please add your review" required></textarea>
+            </div>
+
             <button type="submit">post review</button>
         </form>
+
+        <section class="user-reviews">
+            
+        </section>
         <table border="1" class="reviews-table">
 
             <?php

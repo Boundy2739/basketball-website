@@ -101,7 +101,7 @@ if (isset($_SESSION['authorized']) && $_SESSION['authorized'] === TRUE){
 
    
     <p>Add items </p>
-    <form method="post" class="form-container">
+    <form method="post" class="login-form">
     <label for="itemname">Item name</label>
     <input type="text" name="itemname" id="itemname" required>
     <label for="quantity">Quantity</label>
@@ -109,13 +109,8 @@ if (isset($_SESSION['authorized']) && $_SESSION['authorized'] === TRUE){
     <label for="price">Price</label>
     <input type="number" name="price" id="price" required>
     <input type="submit" value="Add New"/>
-    <button id="back">Go back to member area</button>
-    <button id="logout">logout</button</form>  
+    <button id="back">Go back to member area</button> 
     <script>
-        const btn = document.getElementById("logout");
-        btn.onclick =  () => {
-        location.href = "logout.php";
-        }
         const goBack = document.getElementById("back");
         goBack.onclick =  () => {
         location.href = "membersarea.php";
