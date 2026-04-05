@@ -267,6 +267,7 @@ legend {
     background: #f5f5f5;
     padding: 30px;
     border-radius: 10px;
+    margin-bottom: 20px;
 }
 
 .review-form h2 {
@@ -303,7 +304,7 @@ legend {
     resize:none;
     
 }
-.email-subject{
+.names-input-fields{
     display: flex;
     justify-content: center;
     gap:20px;
@@ -327,10 +328,15 @@ legend {
     background-color: #c55400;
 }
 
-.user-reviews-section{
+.reviews-section{
+}
+.user-reviews-box{
     margin:auto;
+    margin-bottom: 20px;
     display: flex;
-    background-color: yellow;
+    border-color: orangered;
+    border-width: 3px;
+    border-style: solid;
     width:40%;
     padding:10px;
     border-radius: 10px;
@@ -344,9 +350,7 @@ legend {
 
 .user-review {
     padding: 20px;
-    border-width: 2px;
-    border-style: solid;
-    border-color: black;
+    background-color: rgb(230, 230, 230);
 }
 .review-footer {
     align-self: flex-end;
