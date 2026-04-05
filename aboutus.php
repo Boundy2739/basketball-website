@@ -17,7 +17,7 @@
       <div class="about-text">
         <h1>About Our Store</h1>
         <p>
-          We’re more than a basketball store — we’re a community for players,
+          We're more than a basketball store — we're a community for players,
           fans, and hoop dreamers. From street courts to pro arenas, our mission
           is to bring you the best gear to elevate your game.
         </p>
@@ -31,7 +31,7 @@
     <div class="about-values">
       <div class="value-card">
         <h3>Passion</h3>
-        <p>Basketball isn’t just a sport to us — it’s a lifestyle.</p>
+        <p>Basketball isn't just a sport to us — it's a lifestyle.</p>
       </div>
 
       <div class="value-card">

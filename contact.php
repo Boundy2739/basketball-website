@@ -16,7 +16,7 @@
             <h1>Contact Us</h1>
             <p>
                 Have questions about our products? Need help with an order?
-                We’re here to help. Fill out the form below and our team will
+                We're here to help. Fill out the form below and our team will
                 get back to you as soon as possible.
             </p>
         </div>

@@ -35,8 +35,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         $stmt = $pdo->prepare($sql);
         $stmt->execute([
-            ':reviewemail' => $firstname,
-            ':subject'    => $lastname,
+            ':reviewfname' => $firstname,
+            ':reviewlname'    => $lastname,
             ':review'      => $_POST['review'],
             ':star_radio'  => $rating,
             ':date'  => date("Y-m-d H:i:s"),

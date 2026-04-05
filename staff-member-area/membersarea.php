@@ -11,7 +11,8 @@ try typing the following into the name or email field:
 <?php
 session_start();       
 require_once "pdo.php";
-
+require 'project_header.php';
+title_bar("Members area");
 
 if (!isset($_SESSION['authorized']) || $_SESSION['authorized'] !== true) {
     
