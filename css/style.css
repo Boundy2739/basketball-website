@@ -326,3 +326,28 @@ legend {
 .review-form button:hover {
     background-color: #c55400;
 }
+
+.user-reviews-section{
+    margin:auto;
+    display: flex;
+    background-color: yellow;
+    width:40%;
+    padding:10px;
+    border-radius: 10px;
+    flex-direction: column;
+}
+.review-header{
+    display: flex;
+    align-items: center;
+    gap:10px;
+}
+
+.user-review {
+    padding: 20px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: black;
+}
+.review-footer {
+    align-self: flex-end;
+}

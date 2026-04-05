@@ -30,17 +30,17 @@
 
     <div class="about-values">
       <div class="value-card">
-        <h3>🏀 Passion</h3>
+        <h3>Passion</h3>
         <p>Basketball isn’t just a sport to us — it’s a lifestyle.</p>
       </div>
 
       <div class="value-card">
-        <h3>🔥 Quality</h3>
+        <h3>Quality</h3>
         <p>We stock only authentic, high-performance products.</p>
       </div>
 
       <div class="value-card">
-        <h3>🤝 Community</h3>
+        <h3>Community</h3>
         <p>Supporting local players, teams, and basketball culture.</p>
       </div>
     </div>
