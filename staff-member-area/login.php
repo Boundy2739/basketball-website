@@ -1,7 +1,5 @@
 <?php
-echo "<p>hello</p>";
-require_once 'project_header.php';
-require_once "pdo.php";
+require_once "../pdo.php";
 session_start();
 if (isset($_POST['username']) && isset($_POST['password'])) {
     $typed_email = $_POST['username'];

@@ -1,6 +1,7 @@
 <?php
 session_start();       
-require_once "pdo.php";
+require_once "../pdo.php";
+require '../project_header.php';
 
 
 if (!isset($_SESSION['authorized']) || $_SESSION['authorized'] !== true) {

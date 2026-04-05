@@ -1,5 +1,5 @@
 <?php
-require_once "pdo.php";
+require_once "../pdo.php";
 if (isset($_GET['imageid'])){
     $id = (int) $_GET['imageid'];
 
