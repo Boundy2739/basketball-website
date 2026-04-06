@@ -34,11 +34,11 @@ if (isset($_SESSION['authorized']) && $_SESSION['authorized'] === TRUE) {
 
 <head>
     <title>Stock</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 
 <body>
-    <div class="container">
+    <section class="container">
         <table border="1">
             <tr>
                 <th>Image</th>
@@ -75,7 +75,7 @@ if (isset($_SESSION['authorized']) && $_SESSION['authorized'] === TRUE) {
                 } else {
                     echo "<tr><td>";
                     echo '<div class="options">';
-                    echo '<img src="uploaded_images/' . $row['image'] . '" alt="" width="20%">';
+                    echo '<img src="../uploaded_images/' . $row['image'] . '" alt="" width="20%">';
                     echo '<a class="btn2" href="deleteimages.php?imageid=' . $row['id'] . '">Delete image</a>';
                     echo '</div>';
                     echo "</td><td>";
@@ -100,7 +100,7 @@ if (isset($_SESSION['authorized']) && $_SESSION['authorized'] === TRUE) {
 
             ?>
         </table>
-    </div>
+        </section>
 
 
 
