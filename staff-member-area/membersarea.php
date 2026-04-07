@@ -30,29 +30,38 @@ $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 <body>
 
-    <div class="container">
-        <table border="1">
-            <tr>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Password</th>
-                <th>Options</th>
-            </tr>
-            <?php
-            foreach ($rows as $row) {
-                echo "<tr><td>";
-                echo (htmlentities($row['name']));
-                echo ("</td><td>");
-                echo (htmlentities($row['email']));
-                echo ("</td><td>");
-                echo (htmlentities($row['password']));
-                echo ("<td>");
-                echo '<a href="deleteuser.php?deleteid=' . $row['email'] . '">Delete user</a>';
-                echo ("</td></tr>");
-            }
-            ?>
+    <section class="container">
+        <table>
+            <tbody>
+                <tr>
+
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Password</th>
+                    <th>Options</th>
+
+                </tr>
+                <tr>
+
+                    <?php
+                    foreach ($rows as $row) {
+                        echo "<tr><td>";
+                        echo (htmlentities($row['name']));
+                        echo ("</td><td>");
+                        echo (htmlentities($row['email']));
+                        echo ("</td><td><div class='password-cell'>");
+                        echo (htmlentities($row['password']));
+                        echo'</div></td>';
+                        echo ("<td>");
+                        echo '<a href="deleteuser.php?deleteid=' . $row['email'] . '">Delete user</a>';
+                        echo ("</td></tr>");
+                    }
+                    ?>
+
+                </tr>
+            </tbody>
         </table>
-    </div>
+    </section>
 
     <section class="page-redirect-buttons">
         <form method="POST" action="addmember.php">
@@ -64,7 +73,7 @@ $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <form method="POST" action="logout.php">
             <button type="submit" class="confirm-buttons">Logout</button>
         </form>
-        
+
     </section>
 </body>
 

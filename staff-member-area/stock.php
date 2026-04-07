@@ -28,23 +28,19 @@ $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <body>
     <section class="container">
         <table>
-            <tr>
-                <table>
-                    <tr>
-                        <th>Image</th>
-                        <th>Name</th>
-                        <th>Description</th>
-                        <th>Quantity</th>
-                        <th>Price</th>
-                        <th>Ratings</th>
-                        <th>Options</th>
-                    </tr>
-                </table>
+            <tbody>
+                <tr>
 
+                    <th>Image</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>Ratings</th>
+                    <th>Options</th>
+                </tr>
+                <tr>
 
-            </tr>
-            <tr>
-                <table>
                     <?php
                     foreach ($rows as $row) {
                         if ($row['name'] == NULL) {
@@ -92,12 +88,12 @@ $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         echo '</div>';
                         echo "</td></tr>";
                     }
-
-
                     ?>
-                </table>
-            </tr>
+
+                </tr>
+            </tbody>
         </table>
+        </div>
     </section>
     <section class="page-redirect-buttons">
         <form method="POST" action="additem.php">
