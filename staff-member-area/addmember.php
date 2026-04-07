@@ -11,7 +11,7 @@ if (!isset($_SESSION['authorized']) || $_SESSION['authorized'] !== true) {
 }
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (
-        isset($_POST['name']) && isset($_POST['email'])
+        isset($_POST['fname']) && isset($_POST['email'])
         && isset($_POST['password'])
     ) {
         $passwordString = $_POST["password"];
@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         echo ("<pre>\n" . $sql . "\n</pre>\n");
         $stmt = $pdo->prepare($sql);
         $stmt->execute(array(
-            ':name' => $_POST['name'],
+            ':name' => $_POST['fname'],
             ':email' => $_POST['email'],
             ':password' => $passwordHash
         ));
@@ -45,16 +45,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body>
     <p>Add A New User</p>
     <form method="post" class="login-form">
-        <p>Name:
-            <input type="text" name="name" size="40">
-        </p>
-        <p>Email:
-            <input type="text" name="email">
-        </p>
-        <p>Password:
-            <input type="password" name="password">
-        </p>
-        <p><input type="submit" value="Add New" /></p>
+        <label for="fname">Name:</label>
+        <input type="text" name="fname" id="fname" size="40">
+        <label for="email">Email:</label>
+        <input type="email" name="email" id="email">
+        <label for="password">Password:</label>
+        <input type="password" name="password">
+        <input type="submit" value="Add New" />
     </form>
     <form action="membersarea.php" method="get">
         <button type="submit">Go back to member area</button>
