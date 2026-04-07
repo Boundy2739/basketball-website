@@ -27,66 +27,76 @@ $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 <body>
     <section class="container">
-        <table border="1">
+        <table>
             <tr>
-                <th>Image</th>
-                <th>Name</th>
-                <th>Description</th>
-                <th>Quantity</th>
-                <th>Price</th>
-                <th>Ratings</th>
-                <th>Options</th>
+                <table>
+                    <tr>
+                        <th>Image</th>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Quantity</th>
+                        <th>Price</th>
+                        <th>Ratings</th>
+                        <th>Options</th>
+                    </tr>
+                </table>
+
+
             </tr>
-            <?php
-            foreach ($rows as $row) {
-                if ($row['name'] == NULL) {
-                    $row['name'] = "Missing name!";
-                }
-                if ($row['description'] == NULL) {
-                    $row['description'] = "Missing description!";
-                }
-                if ($row['price'] == NULL) {
-                    $row['price'] = "Missing price!";
-                }
-                if ($row['quantity'] == NULL) {
-                    $row['quantity'] = 0;
-                }
-                if ($row['ratings'] == NULL) {
-                    $row['ratings'] = "No ratings!";
-                }
-                if ($row['image'] == NULL) {
-                    echo "<tr><td>";
-                    echo '<div class="options">';
-                    echo '<a clas="btn1" href="upload.php?itemid=' . $row['id'] . '">Upload image</a>';
-                    echo '</div>';
-                    echo "</td><td>";
-                } else {
-                    echo "<tr><td>";
-                    echo '<div class="options">';
-                    echo '<img src="../uploaded_images/' . $row['image'] . '" alt="" width="20%">';
-                    echo '<a class="btn2" href="deleteimages.php?imageid=' . $row['id'] . '">Delete image</a>';
-                    echo '</div>';
-                    echo "</td><td>";
-                }
-                echo (htmlentities($row['name']));
-                echo "</td><td>";
-                echo (htmlentities($row['description']));
-                echo "</td><td>";
-                echo (htmlentities($row['quantity']));
-                echo "</td><td>";
-                echo (htmlentities($row['price']));
-                echo "</td><td>";
-                echo (htmlentities($row['ratings']));
-                echo "</td><td>";
-                echo '<div class="options">';
-                echo '<a class="btn1" href="updateitem.php?itemid=' . $row['id'] . '">Update item</a>';
-                echo '<a class="btn2" href="deleteitem.php?itemid=' . $row['id'] . '">Delete item</a>';
-                echo '</div>';
-                echo "</td></tr>";
-            }
+            <tr>
+                <table>
+                    <?php
+                    foreach ($rows as $row) {
+                        if ($row['name'] == NULL) {
+                            $row['name'] = "Missing name!";
+                        }
+                        if ($row['description'] == NULL) {
+                            $row['description'] = "Missing description!";
+                        }
+                        if ($row['price'] == NULL) {
+                            $row['price'] = "Missing price!";
+                        }
+                        if ($row['quantity'] == NULL) {
+                            $row['quantity'] = 0;
+                        }
+                        if ($row['ratings'] == NULL) {
+                            $row['ratings'] = "No ratings!";
+                        }
+                        if ($row['image'] == NULL) {
+                            echo "<tr><td>";
+                            echo '<div class="options">';
+                            echo '<a clas="btn1" href="upload.php?itemid=' . $row['id'] . '">Upload image</a>';
+                            echo '</div>';
+                            echo "</td><td>";
+                        } else {
+                            echo "<tr><td>";
+                            echo '<div class="options">';
+                            echo '<img src="../uploaded_images/' . $row['image'] . '" alt="" width="20%">';
+                            echo '<a class="btn2" href="deleteimages.php?imageid=' . $row['id'] . '">Delete image</a>';
+                            echo '</div>';
+                            echo "</td><td>";
+                        }
+                        echo (htmlentities($row['name']));
+                        echo "</td><td><div class='description-cell'>";
+                        echo (htmlentities($row['description']));
+                        echo "</div></td><td>";
+                        echo (htmlentities($row['quantity']));
+                        echo "</td><td>";
+                        echo (htmlentities($row['price']));
+                        echo "</td><td>";
+                        echo (htmlentities($row['ratings']));
+                        echo "</td><td>";
+                        echo '<div class="options">';
+                        echo '<a class="btn1" href="updateitem.php?itemid=' . $row['id'] . '">Update item</a>';
+                        echo '<a class="btn2" href="deleteitem.php?itemid=' . $row['id'] . '">Delete item</a>';
+                        echo '</div>';
+                        echo "</td></tr>";
+                    }
 
 
-            ?>
+                    ?>
+                </table>
+            </tr>
         </table>
     </section>
     <section class="page-redirect-buttons">
