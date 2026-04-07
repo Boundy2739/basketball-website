@@ -53,7 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <input type="password" name="password">
         <input type="submit" value="Add New" class="confirm-buttons">
     </form>
-    <form action="membersarea.php" method="get">
+    <form action="membersarea.php" method="post" class="page-redirect-buttons">
         <button type="submit" class="confirm-buttons">Go back to member area</button>
     </form>
 </body>

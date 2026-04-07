@@ -92,6 +92,13 @@
 .confir-buttons:hover {
     background-color: #9e4500;
 }
+.page-redirect-buttons{
+    margin:auto;
+    width: fit-content;
+    display:flex;
+    flex-direction: row;
+    gap:20px;
+}
 
 /*tables*/
 

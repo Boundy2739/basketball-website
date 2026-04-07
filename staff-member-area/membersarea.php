@@ -54,16 +54,17 @@ $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
         </table>
     </div>
 
-
-    <form method="POST" action="addmember.php">
-        <button type="submit" class="confirm-buttons">Add new user</button>
-    </form>       
-    <form method="POST" action="logout.php">
-        <button type="submit" class="confirm-buttons">Logout</button>
-    </form>
-    <form method="POST" action="stock.php">
-        <button type="submit" class="confirm-buttons">Items page</button>
-    </form>
+    <section class="page-redirect-buttons">
+        <form method="POST" action="addmember.php">
+            <button type="submit" class="confirm-buttons">Add new user</button>
+        </form>
+        <form method="POST" action="logout.php">
+            <button type="submit" class="confirm-buttons">Logout</button>
+        </form>
+        <form method="POST" action="stock.php">
+            <button type="submit" class="confirm-buttons">Items page</button>
+        </form>
+    </section>
 </body>
 
 </html>
