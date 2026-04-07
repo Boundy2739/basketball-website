@@ -6,12 +6,12 @@ title_bar("Stock");
 
 if (isset($_POST['itemname']) && isset($_POST['quantity']) && isset($_POST['price'])) {
 
-    $imagename = null;
+    $imagename = NULL;
 
-    if (isset($_FILES['uploadfile']) && $_FILES['uploadfile']['error'] === 0) {
-        $imagename = $_FILES['uploadfile']['name'];
-        $imagesize = $_FILES["uploadfile"]["size"];
-        $tempname = $_FILES["uploadfile"]["tmp_name"];
+    if (isset($_FILES['choosefile']) && $_FILES['choosefile']['error'] === 0) {
+        $imagename = $_FILES['choosefile']['name'];
+        $imagesize = $_FILES["choosefile"]["size"];
+        $tempname = $_FILES["choosefile"]["tmp_name"];
 
 
         $file_info = new finfo(FILEINFO_MIME_TYPE);
@@ -19,26 +19,25 @@ if (isset($_POST['itemname']) && isset($_POST['quantity']) && isset($_POST['pric
 
         $allowed_images = ['image/jpg', 'image/jpeg', 'image/png', 'image/gif', 'image/x-gif'];
 
-        if (in_array($mime_type,$allowed_images) === false){
+        if (in_array($mime_type, $allowed_images) === false) {
             header('Location: additem.php');
             exit;
-            
-
         }
         $max_size = 4 * 1024 * 1024;
 
-        if($max_size < $imagesize){
+        if ($max_size < $imagesize) {
             header('Location: additem.php');
             exit;
         }
 
         $folder = "../uploaded_images/" . $imagename;
-            // query to insert the submitted data
-            $sql = "INSERT INTO images(filename) 
+        // query to insert the submitted data
+        $sql = "INSERT INTO images(filename) 
                     VALUES (:theFile)";
-            $stmt = $pdo->prepare($sql);
-            $stmt->execute(array(
-                ':theFile' => $imagename));
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute(array(
+            ':theFile' => $imagename
+        ));
         move_uploaded_file($tempname, $folder);
     }
 
@@ -77,12 +76,18 @@ if (isset($_POST['itemname']) && isset($_POST['quantity']) && isset($_POST['pric
         <label for="price">Price:</label>
         <input type="number" name="price" id="price" required>
         <label for="item-image">Upload item image:</label>
-        <input type="file" name="choosefile" value="" id="item-image" />
-        <input type="submit" value="Add item" />
+        <input type="file" name="choosefile" value="" id="item-image">
+        <input type="submit" value="Add item" class="confirm-buttons">
     </form>
-    <form action="membersarea.php" method="get">
-        <button type="submit" class="confirm-buttons">Go back to member area</button>
-    </form>
+    <section class="page-redirect-buttons">
+        <form action="stock.php" method="post">
+            <button type="submit" class="confirm-buttons">Go back items list</button>
+        </form>
+        <form action="membersarea.php" method="post">
+            <button type="submit" class="confirm-buttons">Go back to member area</button>
+        </form>
+    </section>
+
 </body>
 
 </html>

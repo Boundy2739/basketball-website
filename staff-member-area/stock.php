@@ -2,7 +2,7 @@
 session_start();
 require_once "../pdo.php";
 require '../project_header.php';
-
+title_bar("Stock");
 
 if (!isset($_SESSION['authorized']) || $_SESSION['authorized'] !== true) {
 
@@ -10,23 +10,11 @@ if (!isset($_SESSION['authorized']) || $_SESSION['authorized'] !== true) {
     exit;
 }
 
-if (isset($_SESSION['authorized']) && $_SESSION['authorized'] === TRUE) {
-    if (isset($_POST['itemname']) && isset($_POST['quantity']) && isset($_POST['price'])) {
 
-        $sql = "INSERT INTO items (name, quantity,price) 
-        VALUES (:name, :quantity, :price)";
-        echo ("<pre>\n" . $sql . "\n</pre>\n");
-        $stmt = $pdo->prepare($sql);
-        $stmt->execute(array(
-            ':name' => $_POST['itemname'],
-            ':quantity' => $_POST['quantity'],
-            ':price' => $_POST['price']
-        ));
-    }
 
-    $stmt = $pdo->query("SELECT * FROM items");
-    $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
-}
+$stmt = $pdo->query("SELECT * FROM items");
+$rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
 
 ?>
 
@@ -100,23 +88,20 @@ if (isset($_SESSION['authorized']) && $_SESSION['authorized'] === TRUE) {
 
             ?>
         </table>
-        </section>
+    </section>
+    <section class="page-redirect-buttons">
+        <form method="POST" action="additem.php">
+            <button type="submit" class="confirm-buttons">Add more items</button>
+        </form>
+        <form action="membersarea.php" method="post">
+            <button type="submit" class="confirm-buttons">Go back to member area</button>
+        </form>
+    </section>
 
 
 
-    <p>Add items </p>
-    <form method="post" class="login-form">
-        <label for="itemname">Item name</label>
-        <input type="text" name="itemname" id="itemname" required>
-        <label for="quantity">Quantity</label>
-        <input type="number" name="quantity" id="quantity" required>
-        <label for="price">Price</label>
-        <input type="number" name="price" id="price" required>
-        <input type="submit" value="Add New" />
-    </form>
-    <form action="membersarea.php" method="get">
-        <button type="submit">Go back to member area</button>
-    </form>
+
+
 </body>
 
 </html>

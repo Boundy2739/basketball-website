@@ -11,7 +11,7 @@ if (!empty($_SESSION['cart'])) {
 
     $total = array_sum($total);
 
-    print_r($_SESSION['cart']); // debug only if cart exists
+    print_r($_SESSION['cart']); 
 }
 ?>
 

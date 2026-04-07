@@ -1,8 +1,6 @@
 <?php
-
-require_once 'project_header.php';
-
-
+require_once "../pdo.php";
+require_once '../project_header.php';
 session_start();
 if (!isset($_SESSION['authorized']) || $_SESSION['authorized'] !== true) {
     
@@ -101,18 +99,4 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
 $username = $user["name"];
 $page_title = "Image Upload in PHP";
 title_bar($page_title);*/
-if (isset($_POST['uploadfile'])){
-    $result = upload_img();
-}
-
 ?>
-
-
-
-    <form method="POST" enctype="multipart/form-data">
-        <input type="file" name="choosefile" value="" /> 
-        <button type="submit" name="uploadfile">Upload Image</button>
-    <?php
-        echo $result;
-    ?>
-    </form>

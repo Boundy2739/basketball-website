@@ -56,13 +56,14 @@ $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 
     <form method="POST" action="addmember.php">
-        <button type="submit">Add new user</button>
+        <button type="submit" class="confirm-buttons">Add new user</button>
     </form>       
     <form method="POST" action="logout.php">
-        <button type="submit">Logout</button>
+        <button type="submit" class="confirm-buttons">Logout</button>
     </form>
     <form method="POST" action="stock.php">
-        <button type="submit">Items page</button>
+        <button type="submit" class="confirm-buttons">Items page</button>
+    </form>
 </body>
 
 </html>

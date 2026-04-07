@@ -41,7 +41,7 @@
             <label for="message">Message</label>
             <textarea name="message" id="message" rows="5" required></textarea>
 
-            <button type="submit">Send Message</button>
+            <button type="submit" class="confirm-buttons">Send Message</button>
         </form>
 
         <!-- Contact Info Cards -->
