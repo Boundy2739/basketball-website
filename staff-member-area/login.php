@@ -14,7 +14,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
 
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
     if ($user && password_verify($typed_password,$user['password'])) {
-        $_SESSION['authorized'] = TRUE;
+        $_SESSION['authorised'] = TRUE;
         
         header('Location: membersarea.php');
         exit;

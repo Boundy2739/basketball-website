@@ -2,7 +2,7 @@
 require_once "../pdo.php";
 require_once '../project_header.php';
 session_start();
-if (!isset($_SESSION['authorized']) || $_SESSION['authorized'] !== true) {
+if (!isset($_SESSION['authorised']) || $_SESSION['authorised'] !== true) {
     
     header('Location: login_form.php');
     exit;

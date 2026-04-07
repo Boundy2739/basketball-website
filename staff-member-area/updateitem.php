@@ -1,7 +1,7 @@
 <?php
 session_start();
 require_once "pdo.php";
-if (!isset($_SESSION['authorized']) || $_SESSION['authorized'] !== true) {
+if (!isset($_SESSION['authorised']) || $_SESSION['authorised'] !== true) {
     
     header('Location: login_form.php');
     exit;

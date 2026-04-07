@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <?php  require '../project_header.php';
-    title_bar("")?>
+    title_bar("");
+    session_start();
+    print_r($_SESSION);
+    if(isset($_SESSION['authorised']) && $_SESSION['authorised'] === true) {
+
+        header('Location: membersarea.php');
+        exit;
+    }
+    
+    ?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">

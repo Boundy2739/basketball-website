@@ -27,8 +27,8 @@ function title_bar($title)
             <a href="/basketballwebsite/aboutus.php">About us</a>
             <a href="/basketballwebsite/items.php">Basketballs</a>
             <a href="/basketballwebsite/contact.php">Contact</a>
-            <a href="/basketballwebsite/staff-member-area/login_form.php">Member Login</a>
             <a href="/basketballwebsite/review.php">Customer reviews</a>
+            <a href="/basketballwebsite/staff-member-area/login_form.php">Staff area</a>
             <a href="/basketballwebsite/cart.php">Cart <i class="fa fa-shopping-cart"></i></a>
         </nav>
 

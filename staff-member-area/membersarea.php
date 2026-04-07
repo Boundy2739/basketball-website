@@ -14,7 +14,7 @@ require_once "../pdo.php";
 require '../project_header.php';
 title_bar("Members area");
 
-if (!isset($_SESSION['authorized']) || $_SESSION['authorized'] !== true) {
+if (!isset($_SESSION['authorised']) || $_SESSION['authorised'] !== true) {
 
     header('Location: login_form.php');
     exit;
@@ -58,12 +58,13 @@ $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <form method="POST" action="addmember.php">
             <button type="submit" class="confirm-buttons">Add new user</button>
         </form>
-        <form method="POST" action="logout.php">
-            <button type="submit" class="confirm-buttons">Logout</button>
-        </form>
         <form method="POST" action="stock.php">
             <button type="submit" class="confirm-buttons">Items page</button>
         </form>
+        <form method="POST" action="logout.php">
+            <button type="submit" class="confirm-buttons">Logout</button>
+        </form>
+        
     </section>
 </body>
 
