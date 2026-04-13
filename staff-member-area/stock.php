@@ -4,11 +4,7 @@ require_once "../pdo.php";
 require '../project_header.php';
 title_bar("Stock");
 
-if (!isset($_SESSION['authorised']) || $_SESSION['authorised'] !== true) {
-
-    header('Location: login_form.php');
-    exit;
-}
+requireAuthorisation();
 
 
 

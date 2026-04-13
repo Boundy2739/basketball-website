@@ -1,12 +1,8 @@
 <?php
 session_start();
 require_once "pdo.php";
-if (!isset($_SESSION['authorised']) || $_SESSION['authorised'] !== true) {
-    
-    header('Location: login_form.php');
-    exit;
-    }
-else{
+requireAuthorisation();
+
 $rows = null;
 
 if(!empty($_POST['newname'])){
@@ -49,7 +45,7 @@ if(isset($_GET['itemid'])){
         ':id' => $_GET['itemid']
     ));
     $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
-}}
+}
 ?>
 
 

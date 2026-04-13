@@ -3,7 +3,7 @@ session_start();
 require_once "../pdo.php";
 require '../project_header.php';
 title_bar("Stock");
-
+requireAuthorisation();
 if (isset($_POST['itemname']) && isset($_POST['quantity']) && isset($_POST['price'])) {
 
     $imagename = NULL;

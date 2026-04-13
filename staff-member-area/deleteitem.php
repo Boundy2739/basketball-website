@@ -1,5 +1,6 @@
 <?php
 require_once "../pdo.php";
+requireAuthorisation();
 if(isset($_GET["itemid"])){
     
     $sql = "DELETE from items WHERE id=?";

@@ -4,11 +4,7 @@ require_once "../pdo.php";
 require '../project_header.php';
 title_bar("Members area");
 
-if (!isset($_SESSION['authorised']) || $_SESSION['authorised'] !== true) {
-
-    header('Location: login_form.php');
-    exit;
-}
+requireAuthorisation();
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (
         isset($_POST['fname']) && isset($_POST['email'])

@@ -14,11 +14,7 @@ require_once "../pdo.php";
 require '../project_header.php';
 title_bar("Members area");
 
-if (!isset($_SESSION['authorised']) || $_SESSION['authorised'] !== true) {
-
-    header('Location: login_form.php');
-    exit;
-}
+requireAuthorisation();
 $stmt = $pdo->query("SELECT name, email, password FROM users");
 $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
