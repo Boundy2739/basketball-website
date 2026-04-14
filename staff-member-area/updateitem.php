@@ -1,6 +1,9 @@
 <?php
 session_start();
-require_once "pdo.php";
+require_once "../pdo.php";
+require '../templates/project_header.php';
+require '../templates/project_footer.php';
+require '../models/userauthorisation.php';
 requireAuthorisation();
 
 $rows = null;
@@ -54,6 +57,7 @@ if(isset($_GET['itemid'])){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    style
     <title>Update item</title>
 </head>
 <body>

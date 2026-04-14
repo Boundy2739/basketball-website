@@ -1,6 +1,7 @@
 <!doctype html>
 <?php
-require 'project_header.php';
+require './templates/project_header.php';
+require './templates/project_footer.php';
 require_once 'pdo.php';
 include 'searchfunction.php';
 

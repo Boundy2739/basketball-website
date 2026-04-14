@@ -1,7 +1,7 @@
 <!doctype html>
 <?php  
-require 'project_header.php';
-require 'project_footer.php';
+require './templates/project_header.php';
+require './templates/project_footer.php';
 
 title_bar("Home");
 ?>

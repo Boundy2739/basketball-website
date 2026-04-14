@@ -1,7 +1,9 @@
 <?php
 session_start();
 require_once "../pdo.php";
-require '../project_header.php';
+require '../templates/project_header.php';
+require '../templates/project_footer.php';
+require '../models/userauthorisation.php';
 title_bar("Stock");
 
 requireAuthorisation();

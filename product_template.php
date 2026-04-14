@@ -1,4 +1,5 @@
-<?php require 'project_header.php';
+<?php require './templates/project_header.php';
+require './templates/project_footer.php';
 require 'pdo.php';
 title_bar("Item");
 $_SESSION['cart'] = array();

@@ -1,5 +1,8 @@
 <?php
 require_once "pdo.php";
+require './templates/project_header.php';
+require './templates/project_footer.php';
+title_bar("Reviews");
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (
@@ -65,8 +68,6 @@ $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 <body>
     <section id="container">
-        <?php require 'project_header.php';
-        title_bar("") ?>
         <h1 class="review-title">Leave a review!</h1>
         <form method="post" class="review-form">
             <div class="names-input-fields">
