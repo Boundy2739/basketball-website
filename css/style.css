@@ -145,7 +145,7 @@
     border-bottom: 1px solid #e0e0e0;
     vertical-align: middle;
     font-size: 14px;
-    max-width: 400px;
+    
 
 
 }
@@ -194,11 +194,7 @@
     background-color: #0056b3;
 }
 
-.container a {
-    color: #d9534f;
-    text-decoration: none;
-    font-size: 13px;
-}
+
 
 .container a:hover {
     text-decoration: underline;
@@ -217,8 +213,17 @@
     text-align: center;
     margin-bottom: 8px;
     font-weight: bold;
+    text-decoration: none;
 }
-
+.container a {
+    display: block;
+    padding: 6px 10px;
+    border-radius: 5px;
+    text-align: center;
+    margin-bottom: 8px;
+    font-weight: bold;
+    text-decoration: none;
+}
 .options img {
     display: block;
     margin: auto;

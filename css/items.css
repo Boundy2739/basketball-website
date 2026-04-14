@@ -9,22 +9,6 @@
     padding: 5px;
 }
 
-.main-grid .header {
-    grid-area: header;
-}
-
-.main-grid .main {
-    grid-area: content;
-}
-
-.main-grid .footer {
-    grid-area: footer;
-}
-
-/* Table section */
-.table-items {
-    background-color: yellow;
-}
 
 /* Lists */
 ul {

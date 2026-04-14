@@ -5,6 +5,8 @@ require '../templates/project_header.php';
 require '../templates/project_footer.php';
 require '../models/userauthorisation.php';
 require '../models/imageupdate.php';
+require '../models/renderimage.php';
+title_bar("Update stock");
 requireAuthorisation();
 if (isset($_GET['itemid'])) {
     $sql = "SELECT * from items  where id = :id";
@@ -37,8 +39,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         ));
     }
-
-    echo 'test';
     if (!empty($_POST['new-desc'])) {
         $sql = "UPDATE items
             set description =:description
@@ -50,7 +50,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         ));
     }
-    echo 'test';
     if (!empty($_FILES['new-image']['name'])) {
         $result = update_img($pdo, $_POST['old-image'], $_FILES['new-image'], $item);
         echo $result;
@@ -67,25 +66,35 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/forms.css">
     <title>Document</title>
 </head>
 
 <body>
     <p>Add items </p>
-    <form method="post" class="login-form" enctype="multipart/form-data">
-        <label for="itemname">Item name:</label>
-        <input type="text" name="new-name" id="new-name"  value="<?php echo htmlentities($item['name']) ?>">
-        <label for="item-desc">Item description:</label>
-        <input type="text" name="new-desc" id="new-desc"  value="<?php echo htmlentities($item['description']) ?>">
-        <label for="quantity">Quantity:</label>
-        <input type="number" name="new-quantity" id="new-quantity"  value="<?php echo htmlentities($item['quantity']) ?>">
-        <label for="price">Price:</label>
-        <input type="number" name="new-price" id="new-price"  value="<?php echo htmlentities($item['price']) ?>">
-        <label for="item-image">Upload item image:</label>
-        <input type="file" name="new-image" id="new-image">
-        <img src="../uploaded_images/<?php echo htmlspecialchars($item['image']) ?>" width="150">
-        <input type="hidden" name="old-image" required value="<?php echo htmlspecialchars($item['image']) ?>">
-        <input type="submit" value="Apply changes" class="confirm-buttons">
+    <form method="post" class="item-form" enctype="multipart/form-data">
+        <div class="item-form-left">
+            <label for="itemname">Item name:</label>
+            <input type="text" name="new-name" id="new-name" value="<?php echo htmlentities($item['name']) ?>">
+            <label for="item-desc">Item description:</label>
+            <textarea name="new-desc" id="new-desc" value="<?php echo htmlentities($item['description']) ?>"></textarea>
+            <label for="quantity">Quantity:</label>
+            <input type="number" name="new-quantity" id="new-quantity" value="<?php echo htmlentities($item['quantity']) ?>">
+            <label for="price">Price:</label>
+            <input type="number" name="new-price" id="new-price" value="<?php echo htmlentities($item['price']) ?>">
+        </div>
+        <div class="item-form-right">
+            <label for="item-image">Upload item image:</label>
+            <input type="file" name="new-image" id="new-image">
+            <?php  
+            $img = renderImg($item['image']);
+            echo $img;
+            ?>
+            <input type="hidden" name="old-image" value="<?php echo $img ?>
+        </div>
+        <div class="item-form-bottom">
+            <input type="submit" value="Apply changes" class="confirm-buttons">
+        </div>
     </form>
     <section class="page-redirect-buttons">
         <form action="stock.php" method="post">

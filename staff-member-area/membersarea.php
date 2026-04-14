@@ -51,7 +51,7 @@ $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         echo (htmlentities($row['password']));
                         echo'</div></td>';
                         echo ("<td>");
-                        echo '<a href="deleteuser.php?deleteid=' . $row['email'] . '">Delete user</a>';
+                        echo '<a class="btn2" href="deleteuser.php?deleteid=' . $row['email'] . '">Delete user</a>';
                         echo ("</td></tr>");
                     }
                     ?>
