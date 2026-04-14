@@ -6,7 +6,7 @@ require '../templates/project_footer.php';
 require '../models/userauthorisation.php';
 title_bar("Stock");
 requireAuthorisation();
-if (isset($_POST['itemname']) && isset($_POST['quantity']) && isset($_POST['price'])) {
+if (isset($_POST['item-name']) && isset($_POST['quantity']) && isset($_POST['price'])) {
 
     $imagename = NULL;
 
@@ -43,13 +43,14 @@ if (isset($_POST['itemname']) && isset($_POST['quantity']) && isset($_POST['pric
         move_uploaded_file($tempname, $folder);
     }
 
-    $sql = "INSERT INTO items (image,name, quantity,price) 
-    VALUES (:image,:name, :quantity, :price)";
+    $sql = "INSERT INTO items (image,name,description, quantity,price) 
+    VALUES (:image,:name,:description :quantity, :price)";
     echo ("<pre>\n" . $sql . "\n</pre>\n");
     $stmt = $pdo->prepare($sql);
     $stmt->execute(array(
         ':image' => $imagename,
-        ':name' => $_POST['itemname'],
+        ':name' => $_POST['item-name'],
+        ':description' => $_POST['item-desc'],
         ':quantity' => $_POST['quantity'],
         ':price' => $_POST['price']
     ));
@@ -65,21 +66,30 @@ if (isset($_POST['itemname']) && isset($_POST['quantity']) && isset($_POST['pric
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/forms.css">
     <title>Document</title>
 </head>
 
 <body>
     <p>Add items </p>
-    <form method="post" class="login-form" enctype="multipart/form-data">
-        <label for="itemname">Item name:</label>
-        <input type="text" name="itemname" id="itemname" required>
-        <label for="quantity">Quantity:</label>
-        <input type="number" name="quantity" id="quantity" required>
-        <label for="price">Price:</label>
-        <input type="number" name="price" id="price" required>
-        <label for="item-image">Upload item image:</label>
-        <input type="file" name="choosefile" value="" id="item-image">
-        <input type="submit" value="Add item" class="confirm-buttons">
+    <form method="post" class="item-form" enctype="multipart/form-data">
+        <div class="item-form-left">
+            <label for="itemname">Item name:</label>
+            <input type="text" name="itemname" id="itemname" required>
+            <label for="itemname">Item description:</label>
+            <textarea name="item-desc" id="item-desc"  placeholder="Please add item decription" required></textarea>
+            <label for="quantity">Quantity:</label>
+            <input type="number" name="quantity" id="quantity" required>
+            <label for="price">Price:</label>
+            <input type="number" name="price" id="price" required>
+        </div>
+        <div class="item-form-right">
+            <label for="item-image">Upload item image:</label>
+            <input type="file" name="choosefile" value="" id="item-image">
+        </div>
+        <div class="item-form-bottom">
+            <input type="submit" value="Add item" class="confirm-buttons">
+        </div>
     </form>
     <section class="page-redirect-buttons">
         <form action="stock.php" method="post">
