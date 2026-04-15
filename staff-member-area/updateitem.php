@@ -4,6 +4,7 @@ require_once "../pdo.php";
 require '../templates/project_header.php';
 require '../templates/project_footer.php';
 require '../functions/userauthorisation.php';
+require '../functions/validateimage.php';
 require '../functions/imageupdate.php';
 require '../functions/renderimage.php';
 title_bar("Update stock");
@@ -88,9 +89,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <label for="itemname">Item name:</label>
             <input type="text" name="new-name" id="new-name" value="<?php echo htmlentities($item['name']) ?>">
             <label for="new-short-desc">Short description:</label>
-            <textarea name="new-short-desc" id="new-short-desc" value="<?php echo htmlentities($item['description']) ?>"></textarea>
+            <textarea name="new-short-desc" id="new-short-desc" value="<?php echo htmlentities($item['short_description']) ?>"></textarea>
             <label for="new-long-desc">Long description:</label>
-            <textarea name="new-long-desc" id="new-long-desc" value="<?php echo htmlentities($item['description']) ?>"></textarea>
+            <textarea name="new-long-desc" id="new-long-desc" value="<?php echo htmlentities($item['long_description']) ?>"></textarea>
             <label for="quantity">Quantity:</label>
             <input type="number" name="new-quantity" id="new-quantity" value="<?php echo htmlentities($item['quantity']) ?>">
             <label for="price">Price:</label>

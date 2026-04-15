@@ -56,9 +56,38 @@
     flex-direction: row;
     gap: 20px;
 }
+.last-confirmation-buttons{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    
+}
+.hidden-pwd-box{
+    display:none;
+}
 
-
-
+.btn-cancel {
+    width:max-content;
+    margin-top: 20px;
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    background-color: rgb(255, 0, 0);
+    color:white;
+    font-weight: bold;
+    cursor: pointer;
+}
+.btn-continue {
+    width:max-content;
+    margin-top: 20px;
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    background-color:rgb(3, 212, 3);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
 
 /* review form section*/
 .review-title {

@@ -47,14 +47,14 @@ $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             $row['ratings'] = "No ratings!";
                         }
                         echo "<tr><td>";
-                        $img = renderImg($row['image'],150);
+                        $img = renderImg($row['image'],100);
                         echo $img;
                         echo "</td><td>";
                         echo (htmlentities($row['name']));
-                        echo "</td><td><div class='description-cell'>";
+                        echo "</td><td><div class='description-cell' style='width:100px'>";
                         echo (htmlentities($row['short_description']));
                         echo "</div></td>";
-                        echo "<td><div class='description-cell'>";
+                        echo "<td><div class='description-cell' style='width:100px'>";
                         echo (htmlentities($row['long_description']));
                         echo "</div></td><td>";
                         echo (htmlentities($row['quantity']));

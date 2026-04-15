@@ -4,51 +4,19 @@ require_once "../pdo.php";
 require '../templates/project_header.php';
 require '../templates/project_footer.php';
 require '../functions/userauthorisation.php';
+require '../functions/validateinputs.php';
+require '../functions/validateimage.php';
 title_bar("Stock");
 requireAuthorisation();
 if (isset($_POST['item-name']) && isset($_POST['quantity']) && isset($_POST['price'])) {
 
-    $imagename = NULL;
-
-    if (isset($_FILES['choosefile']) && $_FILES['choosefile']['error'] === 0) {
-        $imagename = $_FILES['choosefile']['name'];
-        $imagesize = $_FILES["choosefile"]["size"];
-        $tempname = $_FILES["choosefile"]["tmp_name"];
-
-
-        $file_info = new finfo(FILEINFO_MIME_TYPE);
-        $mime_type = $file_info->file($tempname);
-
-        $allowed_images = ['image/jpg', 'image/jpeg', 'image/png', 'image/gif', 'image/x-gif'];
-
-        if (in_array($mime_type, $allowed_images) === false) {
-            header('Location: additem.php');
-            exit;
-        }
-        $max_size = 4 * 1024 * 1024;
-
-        if ($max_size < $imagesize) {
-            header('Location: additem.php');
-            exit;
-        }
-
-        $folder = "../uploaded_images/" . $imagename;
-        // query to insert the submitted data
-        $sql = "INSERT INTO images(filename) 
-                    VALUES (:theFile)";
-        $stmt = $pdo->prepare($sql);
-        $stmt->execute(array(
-            ':theFile' => $imagename
-        ));
-        move_uploaded_file($tempname, $folder);
-    }
-
+    $image = validateImg($pdo,$_FILES['image-name']);
     $sql = "INSERT INTO items (image,name,short_description,long_description,quantity,price) 
     VALUES (:image,:name,:short_desc,:long_desc, :quantity, :price)";
     echo ("<pre>\n" . $sql . "\n</pre>\n");
     $stmt = $pdo->prepare($sql);
     $stmt->execute(array(
-        ':image' => $imagename,
+        ':image' => $image,
         ':name' => $_POST['item-name'],
         ':short_desc' => $_POST['short-desc'],
         ':long_desc' => $_POST['long-desc'],
@@ -88,7 +56,7 @@ if (isset($_POST['item-name']) && isset($_POST['quantity']) && isset($_POST['pri
         </div>
         <div class="item-form-right">
             <label for="item-image">Upload item image:</label>
-            <input type="file" name="choosefile" value="" id="item-image">
+            <input type="file" name="item-image" value="" id="item-image">
         </div>
         <div class="item-form-bottom">
             <input type="submit" value="Add item" class="confirm-buttons">

@@ -7,8 +7,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $typed_email = $_POST['username'];
         $typed_password = $_POST['password'];
 
-        $user = findUser($pdo,$typed_email);
-        if ($user && password_verify($typed_password, $user['password'])) {
+        $user = findUserWithPwd($pdo,$typed_email,$typed_password);
+        if ($user) {
+            $_SESSION['email'] = $typed_email;
             $_SESSION['authorised'] = TRUE;
 
             header('Location: membersarea.php');
