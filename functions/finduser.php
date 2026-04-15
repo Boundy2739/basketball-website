@@ -1,11 +1,14 @@
 <?php 
-function findUser($pdo, $typed_email)
+function findUserWithPwd($pdo, $email,$password)
 {
     $sql = "SELECT * FROM users WHERE email = :email";
     $stmt = $pdo->prepare($sql);
     $stmt->execute([
-        ':email' => $typed_email,
+        ':email' => $email,
     ]);
-
-    return $stmt->fetch(PDO::FETCH_ASSOC);
+    $user = $stmt->fetch(PDO::FETCH_ASSOC);
+    if($user && password_verify($password, $user['password'])){
+        return $user;
+    }
+    
 }
