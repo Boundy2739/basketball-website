@@ -49,20 +49,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 
 <body>
-    <form method="POST" action="" class="login-form">
-        <h2>Are you sure you want to delete the item?</h2>
-        <div class="last-confirmation-buttons">
-            <button type="button" class="btn-cancel">No</button>
-            <button type="button" class="btn-continue">Yes</button>
-        </div>
-        <div class="hidden-pwd-box">
-            <label for="pwd-confirm-input">Password:</label>
-            <input type="password" name="password" id="pwd-confirm-input" required placeholder="please enter the password">
-            <button type="submit" class="confirm-buttons">Confirm Delete</button>
-            <button type="button" class="btn-cancel">Cancel</button>
-        </div>
 
-    </form>
+    <?php require_once '../templates/confirmform.php'; ?>
     <script src="../js/main.js"></script>
 </body>
 
