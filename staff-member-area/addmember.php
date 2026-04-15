@@ -3,7 +3,7 @@ session_start();
 require_once "../pdo.php";
 require '../templates/project_header.php';
 require '../templates/project_footer.php';
-require '../models/userauthorisation.php';
+require '../functions/userauthorisation.php';
 title_bar("Members area");
 
 requireAuthorisation();

@@ -3,9 +3,9 @@ session_start();
 require_once "../pdo.php";
 require '../templates/project_header.php';
 require '../templates/project_footer.php';
-require '../models/userauthorisation.php';
-require '../models/imageupdate.php';
-require '../models/renderimage.php';
+require '../functions/userauthorisation.php';
+require '../functions/imageupdate.php';
+require '../functions/renderimage.php';
 title_bar("Update stock");
 requireAuthorisation();
 if (isset($_GET['itemid'])) {
@@ -39,14 +39,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         ));
     }
-    if (!empty($_POST['new-desc'])) {
+    if (!empty($_POST['new-short-desc'])) {
         $sql = "UPDATE items
-            set description =:description
+            set short_description =:short_desc
             WHERE id =:id";
         $stmt = $pdo->prepare($sql);
         $stmt->execute(array(
             ':id' => $_GET['itemid'],
-            ':description' => $_POST['new-desc']
+            ':short_desc' => $_POST['new-short-desc']
+
+        ));
+    }
+    if (!empty($_POST['new-long-desc'])) {
+        $sql = "UPDATE items
+            set long_description =:long_desc
+            WHERE id =:id";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute(array(
+            ':id' => $_GET['itemid'],
+            ':long_desc' => $_POST['new-long-desc']
 
         ));
     }
@@ -76,8 +87,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <div class="item-form-left">
             <label for="itemname">Item name:</label>
             <input type="text" name="new-name" id="new-name" value="<?php echo htmlentities($item['name']) ?>">
-            <label for="item-desc">Item description:</label>
-            <textarea name="new-desc" id="new-desc" value="<?php echo htmlentities($item['description']) ?>"></textarea>
+            <label for="new-short-desc">Short description:</label>
+            <textarea name="new-short-desc" id="new-short-desc" value="<?php echo htmlentities($item['description']) ?>"></textarea>
+            <label for="new-long-desc">Long description:</label>
+            <textarea name="new-long-desc" id="new-long-desc" value="<?php echo htmlentities($item['description']) ?>"></textarea>
             <label for="quantity">Quantity:</label>
             <input type="number" name="new-quantity" id="new-quantity" value="<?php echo htmlentities($item['quantity']) ?>">
             <label for="price">Price:</label>
@@ -87,7 +100,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <label for="item-image">Upload item image:</label>
             <input type="file" name="new-image" id="new-image">
             <?php  
-            $img = renderImg($item['image']);
+            $img = renderImg($item['image'],150);
             echo $img;
             ?>
             <input type="hidden" name="old-image" value="<?php echo $img ?>

@@ -3,7 +3,8 @@ session_start();
 require_once "../pdo.php";
 require '../templates/project_header.php';
 require '../templates/project_footer.php';
-require '../models/userauthorisation.php';
+require '../functions/userauthorisation.php';
+require '../functions/renderimage.php';
 title_bar("Stock");
 
 requireAuthorisation();
@@ -31,7 +32,8 @@ $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
                     <th>Image</th>
                     <th>Name</th>
-                    <th>Description</th>
+                    <th>Short Description</th>
+                    <th>Long Description</th>
                     <th>Quantity</th>
                     <th>Price</th>
                     <th>Ratings</th>
@@ -41,38 +43,19 @@ $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
                     <?php
                     foreach ($rows as $row) {
-                        if ($row['name'] == NULL) {
-                            $row['name'] = "Missing name!";
-                        }
-                        if ($row['description'] == NULL) {
-                            $row['description'] = "Missing description!";
-                        }
-                        if ($row['price'] == NULL) {
-                            $row['price'] = "Missing price!";
-                        }
-                        if ($row['quantity'] == NULL) {
-                            $row['quantity'] = 0;
-                        }
                         if ($row['ratings'] == NULL) {
                             $row['ratings'] = "No ratings!";
                         }
-                        if ($row['image'] == NULL) {
-                            echo "<tr><td>";
-                            echo '<div class="options">';
-                            echo '<a clas="btn1" href="upload.php?itemid=' . $row['id'] . '">Upload image</a>';
-                            echo '</div>';
-                            echo "</td><td>";
-                        } else {
-                            echo "<tr><td>";
-                            echo '<div class="options">';
-                            echo '<img src="../uploaded_images/' . $row['image'] . '" alt="" width="20%">';
-                            echo '<a class="btn2" href="deleteimages.php?imageid=' . $row['id'] . '">Delete image</a>';
-                            echo '</div>';
-                            echo "</td><td>";
-                        }
+                        echo "<tr><td>";
+                        $img = renderImg($row['image'],150);
+                        echo $img;
+                        echo "</td><td>";
                         echo (htmlentities($row['name']));
                         echo "</td><td><div class='description-cell'>";
-                        echo (htmlentities($row['description']));
+                        echo (htmlentities($row['short_description']));
+                        echo "</div></td>";
+                        echo "<td><div class='description-cell'>";
+                        echo (htmlentities($row['long_description']));
                         echo "</div></td><td>";
                         echo (htmlentities($row['quantity']));
                         echo "</td><td>";

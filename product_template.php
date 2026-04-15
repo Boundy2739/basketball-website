@@ -66,7 +66,7 @@ if (!empty($_POST['quantity'])) {
             <div class="options">
                 <form method="post">
                     <div class="buttons-wrap">
-                        <label for="quantity">Quantity</label>
+                        <label for="quantity">Quantity:</label>
                         <input type="number" id="quantity" name="quantity">
                         <input type="submit" id="cartbtn" value="add to cart">
                     </div>

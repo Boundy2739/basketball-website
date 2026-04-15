@@ -1,6 +1,6 @@
 <?php
 require_once "../pdo.php";
-require '../models/userauthorisation.php';
+require '../functions/userauthorisation.php';
 requireAuthorisation();
 if (isset($_GET['imageid'])){
     $id = (int) $_GET['imageid'];

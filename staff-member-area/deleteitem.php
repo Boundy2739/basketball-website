@@ -1,21 +1,19 @@
 <?php
+session_start();
 require_once "../pdo.php";
-require '../models/userauthorisation.php';
+require '../functions/userauthorisation.php';
+require'../functions/finditembyid.php';
 requireAuthorisation();
 if(isset($_GET["itemid"])){
-    
+    $item = findItemByID($pdo,$_GET['itemid']);
     $sql = "DELETE from items WHERE id=?";
     $stmt = $pdo->prepare($sql);
-    $stmt->execute([$_GET['itemid']]);
-    
-    echo 'something,something,something';
-    $stmt = $pdo->prepare("SELECT image FROM items WHERE id = ?");
-    $stmt->execute([$_GET['itemid']]);
-    $row = $stmt->fetch(PDO::FETCH_ASSOC);
-    echo "<script>alert('Item deleted')</script>";
-    echo "<script>document.location = 'stock' </script>";
-    if ($row && !empty($row['image'])) {
-        $filePath = 'uploaded_images/' . $row['image'];
+    $stmt->execute([$item['id']]);
+    $sql = "DELETE FROM images WHERE filename =:filename";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([":filename"=>$item['image']]);
+    if ($item['image'] && !empty($item['image'])) {
+        $filePath = "../uploaded_images/" . $item['image'];
 
         
         if (file_exists($filePath)) {
@@ -27,7 +25,7 @@ if(isset($_GET["itemid"])){
         echo "<script>alert('Item deleted')</script>";
     echo "<script>document.location = 'stock' </script>";
     }
-    echo "<script>alert('Item deleted')</script>";
+    echo "<script>alert('Item deleted ".$item['image']."')</script>";
     echo "<script>document.location = 'stock' </script>";
 }
 

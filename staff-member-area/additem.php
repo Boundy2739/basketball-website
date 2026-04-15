@@ -3,7 +3,7 @@ session_start();
 require_once "../pdo.php";
 require '../templates/project_header.php';
 require '../templates/project_footer.php';
-require '../models/userauthorisation.php';
+require '../functions/userauthorisation.php';
 title_bar("Stock");
 requireAuthorisation();
 if (isset($_POST['item-name']) && isset($_POST['quantity']) && isset($_POST['price'])) {
@@ -43,14 +43,15 @@ if (isset($_POST['item-name']) && isset($_POST['quantity']) && isset($_POST['pri
         move_uploaded_file($tempname, $folder);
     }
 
-    $sql = "INSERT INTO items (image,name,description, quantity,price) 
-    VALUES (:image,:name,:description :quantity, :price)";
+    $sql = "INSERT INTO items (image,name,short_description,long_description,quantity,price) 
+    VALUES (:image,:name,:short_desc,:long_desc, :quantity, :price)";
     echo ("<pre>\n" . $sql . "\n</pre>\n");
     $stmt = $pdo->prepare($sql);
     $stmt->execute(array(
         ':image' => $imagename,
         ':name' => $_POST['item-name'],
-        ':description' => $_POST['item-desc'],
+        ':short_desc' => $_POST['short-desc'],
+        ':long_desc' => $_POST['long-desc'],
         ':quantity' => $_POST['quantity'],
         ':price' => $_POST['price']
     ));
@@ -74,10 +75,12 @@ if (isset($_POST['item-name']) && isset($_POST['quantity']) && isset($_POST['pri
     <p>Add items </p>
     <form method="post" class="item-form" enctype="multipart/form-data">
         <div class="item-form-left">
-            <label for="itemname">Item name:</label>
-            <input type="text" name="itemname" id="itemname" required>
-            <label for="itemname">Item description:</label>
-            <textarea name="item-desc" id="item-desc"  placeholder="Please add item decription" required></textarea>
+            <label for="item-name">Item name:</label>
+            <input type="text" name="item-name" id="item-name" required>
+            <label for="short-desc">Item short description:</label>
+            <textarea name="short-desc" id="short-desc"  placeholder="Please add item short decription" required></textarea>
+            <label for="long-desc">Item long description:</label>
+            <textarea name="long-desc" id="long-desc"  placeholder="Please add item decription" required></textarea>
             <label for="quantity">Quantity:</label>
             <input type="number" name="quantity" id="quantity" required>
             <label for="price">Price:</label>

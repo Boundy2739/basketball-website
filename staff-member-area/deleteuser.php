@@ -1,6 +1,7 @@
 <?php
 require_once "../pdo.php";
-require '../models/userauthorisation.php';
+require '../functions/userauthorisation.php';
+session_start();
 requireAuthorisation();
 if (isset($_GET['deleteid'])){
     $user = $_GET['deleteid'];
