@@ -19,14 +19,31 @@ ul {
 
 .items-list {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 20px;
 }
-
-.items-list .individual-item {
-    list-style: none;
+.items-list :hover{
+background-color: #ddd;
+transition-duration: 0.5s;
 }
-
+.individual-item {
+    list-style: none;
+    padding:20px;
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px gray;
+    background-color: rgba(255, 255, 0, 0.085);
+    
+}
+.item-name{
+    font-weight: bold;
+    font-size: 1.2rem;
+    
+}
+.price{
+    font-weight: bold;
+    font-size: 1.2rem;
+    
+}
 .items-list .individual-item article {
     text-align: center;
 }
@@ -39,7 +56,7 @@ ul {
     margin-top: 10px;
 }
 
-.items-list .item-description {
+.item-description {
     text-align: center;
     margin-top: 12px;
 }
@@ -92,4 +109,7 @@ ul {
     margin: 10px 2px 0;
     cursor: pointer;
     border-radius: 10px;
+}
+.viewbtn:hover {
+    background: darkblue;
 }
