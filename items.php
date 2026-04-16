@@ -7,11 +7,18 @@ include 'searchfunction.php';
 
 title_bar("Basketballs");
 
-if (empty($_POST['searchfield']) && empty($_POST['minprice']) && empty($_POST['maxprice'])) {
-    $stmt = $pdo->query("SELECT id, image, name, quantity, price FROM items");
-    $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
-} else {
-    $rows = search($_POST['searchfield'], $_POST['minprice'], $_POST['maxprice']);
+
+$stmt = $pdo->query("SELECT id, image, name, quantity, price FROM items");
+$rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $parameters = array(
+        "item-name" => '',
+        "item-brand" => '',
+        "min-price" => (float)0,
+        "max-price" => (float)99999,
+        "sort-type" => '',
+    );
+    $results = search($parameters);
 }
 ?>
 
@@ -77,7 +84,7 @@ if (empty($_POST['searchfield']) && empty($_POST['minprice']) && empty($_POST['m
         </section>
 
     </div>
-
+    <script src="/js/main.js"></script>
 </body>
 
 </html>
