@@ -43,7 +43,8 @@ function openConfirm(action) {
 }
 function showItemFilters() {
     const hiddenFields = document.querySelectorAll(".hiddenfields");
-
+    const showbtn = document.querySelector(".showfields");
+    showbtn.style.display = 'none';
 
     hiddenFields.forEach(element => {
         element.classList.toggle("hiddenfields")
@@ -54,7 +55,8 @@ function showItemFilters() {
 
 function hideFilters() {
     const enabledFields = document.querySelectorAll(".enabled");
-
+    const showbtn = document.querySelector(".showfields");
+    showbtn.style.display = 'block';
 
     enabledFields.forEach(element => {
         element.classList.toggle("hiddenfields")

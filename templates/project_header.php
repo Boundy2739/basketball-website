@@ -18,11 +18,11 @@ function title_bar($title)
 
     <body>
         <nav>
-            <div class="logo-wrap">
-                <a href="/basketballwebsite/index.php" class="logo">
-                    <img src="/basketballwebsite/logo/01a9431c-1698-4922-913a-42ed3a706026.png">
-                </a>
-            </div>
+
+            <a href="/basketballwebsite/index.php" class="logo">
+                <img src="/basketballwebsite/logo/01a9431c-1698-4922-913a-42ed3a706026.png">
+            </a>
+
 
             <a href="/basketballwebsite/aboutus.php">About us</a>
             <a href="/basketballwebsite/items.php">Basketballs</a>

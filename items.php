@@ -55,6 +55,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <input type="number" name="max-price" id="max-price" class="hiddenfields">
                     <input type="submit" value="search">
                     <button type="button" class="showfields" onclick="showItemFilters()">Advanced search</button>
+                    <button type="button" class="hiddenfields" onclick="hideFilters()">Hide advanced search</button>
 
                 </div>
 

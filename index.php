@@ -18,7 +18,7 @@ title_bar("Home");
 <main class="home-container">
 
     <section class="home-intro">
-        <h1>Welcome to Unnamed Basketball Store</h1>
+        <h1>Hoop avenue</h1>
         <p>
             Your place for basketball gear, clothing and accessories.
             Whether you're training, playing matches or just a fan of the sport,
