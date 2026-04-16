@@ -265,5 +265,18 @@ legend {
     grid-area: bottom;
     margin-left: auto;
     margin-right: auto;
+    display: flex;
+    flex-direction: column;
 }
 
+.item-form-bottom textarea{
+    width:20rem;
+    
+}
+
+.item-form-bottom input{
+    width:10rem;
+    margin-left: auto;
+    margin-right:auto;
+    
+}

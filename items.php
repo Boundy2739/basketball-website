@@ -13,7 +13,7 @@ $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $parameters = array(
         "item-name" => $_POST['searchfield'],
-        "item-brand" => '',
+        "item-brand" => $_POST['brand'],
         "item-type" => $_POST['surface'] ?? '',
         "min-price" => $_POST['min-price'] !== '' ? (float)$_POST['min-price'] : 0,
         "max-price" => $_POST['max-price'] !== '' ? (float)$_POST['max-price'] : 999999,
@@ -49,6 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <option value="price_low">Price: Low → High</option>
                         <option value="price_high">Price: High → Low</option>
                     </select>
+                    <input type="text" name="brand" id="brand" class="hiddenfields" value="">
                     <input type="number" name="min-price" id="min-price" class="hiddenfields">
                     <input type="number" name="max-price" id="max-price" class="hiddenfields">
                     <button type="submit"><i class="fa fa-search"></i></button>

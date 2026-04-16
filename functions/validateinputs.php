@@ -33,3 +33,14 @@ function validate_passwords($password) {
 
     return $password;
 }
+
+function nameLength($name){
+    if (strlen($name) <= 50) {
+        return $name;
+    }
+}
+
+function validateSurfaceType($surface){
+    if(in_array(strtolower($surface), ['outdoor','indoor','both']));
+    return strtolower($surface);
+}

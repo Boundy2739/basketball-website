@@ -18,36 +18,36 @@ if (isset($_GET['itemid'])) {
     $item = $stmt->fetch(PDO::FETCH_ASSOC);
 }
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    if (!empty($_POST['newname'])) {
+    if (!empty($_POST['new-name'])) {
         $sql = "UPDATE items
                 set name =:name
                 WHERE id =:id";
         $stmt = $pdo->prepare($sql);
         $stmt->execute(array(
             ':id' => $_GET['itemid'],
-            ':name' => $_POST['newname']
+            ':name' => $_POST['new-name']
 
         ));
     }
-    if (!empty($_POST['newprice'])) {
+    if (!empty($_POST['new-price'])) {
         $sql = "UPDATE items
                 set price =:price
                 WHERE id =:id";
         $stmt = $pdo->prepare($sql);
         $stmt->execute(array(
             ':id' => $_GET['itemid'],
-            ':price' => $_POST['newprice']
+            ':price' => $_POST['new-price']
 
         ));
     }
-    if (!empty($_POST['new-short-desc'])) {
+    if (!empty($_POST['new-brand'])) {
         $sql = "UPDATE items
-            set short_description =:short_desc
+            set brand =:brand
             WHERE id =:id";
         $stmt = $pdo->prepare($sql);
         $stmt->execute(array(
             ':id' => $_GET['itemid'],
-            ':short_desc' => $_POST['new-short-desc']
+            ':brand' => $_POST['new-brand']
 
         ));
     }
@@ -88,10 +88,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <div class="item-form-left">
             <label for="itemname">Item name:</label>
             <input type="text" name="new-name" id="new-name" value="<?php echo htmlentities($item['name']) ?>">
-            <label for="brand">Brand:</label>
-            <input name="brand" id="brand"  placeholder="Please add item short decription" required value="<?php echo htmlentities($item['brand']) ?>
-            <label for="new-long-desc">Long description:</label>
-            <textarea name="new-long-desc" id="new-long-desc" value="<?php echo htmlentities($item['long_description']) ?>"></textarea>
+            <label for="new-brand">Brand:</label>
+            <input name="new-brand" id="new-brand" placeholder="Item brand" value="<?php echo htmlentities($item['brand']) ?>">
+            <label for="new-surface">Surface type</label>
+            <select name="new-surface" id="new-surface">
+                <option value="">select type</option>
+                <option value="indoor">indoor</option>
+                <option value="outdoor">outdoor</option>
+                <option value="both">both</option>
+            </select>
             <label for="quantity">Quantity:</label>
             <input type="number" name="new-quantity" id="new-quantity" value="<?php echo htmlentities($item['quantity']) ?>">
             <label for="price">Price:</label>
@@ -100,13 +105,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <div class="item-form-right">
             <label for="item-image">Upload item image:</label>
             <input type="file" name="new-image" id="new-image">
-            <?php  
-            $img = renderImg($item['image'],150);
+            <?php
+            $img = renderImg($item['image'], 150);
             echo $img;
             ?>
             <input type="hidden" name="old-image" value="<?php echo $img ?>
         </div>
         <div class="item-form-bottom">
+            <label for="new-long-desc">Description:</label>
+            <textarea name="new-long-desc" id="new-long-desc"><?php echo htmlentities($item['long_description']) ?></textarea>
             <input type="submit" value="Apply changes" class="confirm-buttons">
         </div>
     </form>

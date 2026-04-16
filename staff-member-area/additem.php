@@ -55,8 +55,6 @@ if (isset($_POST['item-name']) && isset($_POST['quantity']) && isset($_POST['pri
                 <option value="outdoor">outdoor</option>
                 <option value="both">both</option>
             </select>
-            <label for="long-desc">Item long description:</label>
-            <textarea name="long-desc" id="long-desc" placeholder="Please add item decription" required></textarea>
             <label for="quantity">Quantity:</label>
             <input type="number" name="quantity" id="quantity" required>
             <label for="price">Price:</label>
@@ -67,6 +65,8 @@ if (isset($_POST['item-name']) && isset($_POST['quantity']) && isset($_POST['pri
             <input type="file" name="item-image" value="" id="item-image">
         </div>
         <div class="item-form-bottom">
+            <label for="long-desc">Item long description:</label>
+            <textarea name="long-desc" id="long-desc" placeholder="Please add item decription" required></textarea>
             <input type="submit" value="Add item" class="confirm-buttons">
         </div>
     </form>
