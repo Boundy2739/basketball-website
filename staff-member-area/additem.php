@@ -1,5 +1,8 @@
 <?php
 session_start();
+if(isset($_SESSION['retrun_page'])){
+    unset($_SESSION['retrun_page']);
+}
 require_once "../pdo.php";
 require '../templates/project_header.php';
 require '../templates/project_footer.php';
@@ -8,24 +11,32 @@ require '../functions/validateinputs.php';
 require '../functions/validateimage.php';
 title_bar("Stock");
 requireAuthorisation();
-if (isset($_POST['item-name']) && isset($_POST['quantity']) && isset($_POST['price'])) {
-
-    $image = validateImg($pdo, $_FILES['item-image']);
+if($_SERVER['REQUEST_METHOD'] === 'POST'){
+    if (isset($_POST['item-name']) && isset($_POST['quantity']) && isset($_POST['price'])) {
+        $_SESSION['retrun_page'] = '../staff-member-area/additem.php';
+        $itemname = nameLength($_POST['item-name']);
+        $brand = nameLength($_POST['brand']);
+        $description = descriptionLength($_POST['long-desc']);
+        $image = validateImg($pdo, $_FILES['item-image']);
+        $quantity = validate_integers($_POST['quantity']);
+        $price = validate_floats($_POST['price']);
     
-    $sql = "INSERT INTO items (image,name,brand,surface,long_description,quantity,price) 
-    VALUES (:image,:name,:brand,:surface,:long_desc, :quantity, :price)";
-    echo ("<pre>\n" . $sql . "\n</pre>\n");
-    $stmt = $pdo->prepare($sql);
-    $stmt->execute(array(
-        ':image' => $image,
-        ':name' => $_POST['item-name'],
-        ':brand' => $_POST['brand'],
-        ':surface' => $_POST['surface'],
-        ':long_desc' => $_POST['long-desc'],
-        ':quantity' => $_POST['quantity'],
-        ':price' => $_POST['price']
-    ));
+        $sql = "INSERT INTO items (image,name,brand,surface,long_description,quantity,price) 
+        VALUES (:image,:name,:brand,:surface,:long_desc, :quantity, :price)";
+        echo ("<pre>\n" . $sql . "\n</pre>\n");
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute(array(
+            ':image' => $image,
+            ':name' => $itemname,
+            ':brand' => $brand,
+            ':surface' => $_POST['surface'],
+            ':long_desc' => $description,
+            ':quantity' => $quantity,
+            ':price' => $price
+        ));
+    }
 }
+
 
 
 ?>
@@ -44,6 +55,7 @@ if (isset($_POST['item-name']) && isset($_POST['quantity']) && isset($_POST['pri
 <body>
     <p>Add items </p>
     <form method="post" class="item-form" enctype="multipart/form-data">
+        <p class="error"><?php displayError();?></p>
         <div class="item-form-left">
             <label for="item-name">Item name:</label>
             <input type="text" name="item-name" id="item-name" required>
@@ -59,7 +71,7 @@ if (isset($_POST['item-name']) && isset($_POST['quantity']) && isset($_POST['pri
             <label for="quantity">Quantity:</label>
             <input type="number" name="quantity" id="quantity" required>
             <label for="price">Price:</label>
-            <input type="number" name="price" id="price" required>
+            <input type="number" name="price" id="price" step="0.01" required>
         </div>
         <div class="item-form-right">
             <label for="item-image">Upload item image:</label>

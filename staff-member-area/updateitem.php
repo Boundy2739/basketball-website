@@ -1,5 +1,8 @@
 <?php
 session_start();
+if(isset($_SESSION['retrun_page'])){
+    unset($_SESSION['retrun_page']);
+}
 require_once "../pdo.php";
 require '../templates/project_header.php';
 require '../templates/project_footer.php';
@@ -18,6 +21,7 @@ if (isset($_GET['itemid'])) {
     $item = $stmt->fetch(PDO::FETCH_ASSOC);
 }
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $_SESSION['retrun_page'] = '../staff-member-area/updateitems.php';
     if (!empty($_POST['new-name'])) {
         $sql = "UPDATE items
                 set name =:name
@@ -63,7 +67,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         ));
     }
     if (!empty($_FILES['new-image']['name'])) {
-        $result = update_img($pdo, $_POST['old-image'], $_FILES['new-image'], $item);
+        $result = update_img($pdo, $_POST['old-image'], $_FILES['new-image'], 
+        $item,'../staff-member-area/updateitem.php');
         echo $result;
     }
 }

@@ -224,10 +224,15 @@ legend {
     grid-template-columns: 2fr 1fr;
     align-items: start;
     grid-template-areas:
+    "error error"
     "left right"
     "bottom bottom";
 }
-
+.error{
+    grid-area: error;
+    margin-right: auto;
+    margin-left: auto;
+}
 
 .item-form label {
     display: block;

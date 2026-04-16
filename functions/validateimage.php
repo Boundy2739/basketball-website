@@ -13,13 +13,12 @@ function validateImg($pdo,$image)
         $allowed_images = ['image/jpg', 'image/jpeg', 'image/png', 'image/gif', 'image/x-gif'];
 
         if (in_array($mime_type, $allowed_images) === false) {
-            header('Location: additem.php');
-            exit;
+            errorMessage("Invalid image type, jpg/jpeg/png only",$_SESSION['return_page']);
         }
         $max_size = 4 * 1024 * 1024;
 
         if ($max_size < $imagesize) {
-            header('Location: additem.php');
+            errorMessage("Image size exceeds 4MB",$_SESSION['return_page']);
             exit;
         }
 
@@ -31,7 +30,9 @@ function validateImg($pdo,$image)
         $stmt->execute(array(
             ':theFile' => $imagename
         ));
-        move_uploaded_file($tempname, $folder);
-        return $imagename;
+        if(move_uploaded_file($tempname, $folder)){
+            return $imagename; 
+        }
+        errorMessage("Invalid image",$_SESSION['return_page']);
     }
 }

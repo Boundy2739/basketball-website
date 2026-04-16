@@ -1,8 +1,8 @@
 <?php
-function update_img($pdo, $oldImg, $newImg, $item)
+function update_img($pdo, $oldImg, $newImg, $item,$redirect)
 {
 
-    $image = validateImg($pdo, $newImg);
+    $image = validateImg($pdo, $newImg,$redirect);
 
     // Add the image to the "image" folder"        
     if ($image) {

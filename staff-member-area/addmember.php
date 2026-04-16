@@ -13,6 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         isset($_POST['fname']) && isset($_POST['email'])
         && isset($_POST['password'])
     ) {
+        $_SESSION['retrun_page'] = '../staff-member-area/addmember.php';
         $fname = validate_names($_POST['fname']);
         $passwordString = validate_passwords($_POST['password']);
         $email = validate_email($_POST['email']);
@@ -49,6 +50,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body>
     <p>Add A New User</p>
     <form method="post" class="login-form">
+    <?php displayError()?>
         <label for="fname">Name:</label>
         <input type="text" name="fname" id="fname">
         <label for="lname">Surname:</label>
