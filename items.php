@@ -1,4 +1,3 @@
-<!doctype html>
 <?php
 require './templates/project_header.php';
 require './templates/project_footer.php';
@@ -14,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $parameters = array(
         "item-name" => $_POST['searchfield'],
         "item-brand" => $_POST['brand'],
-        "item-type" => $_POST['surface'] ?? '',
+        "surface" => $_POST['surface'],
         "min-price" => $_POST['min-price'] !== '' ? (float)$_POST['min-price'] : 0,
         "max-price" => $_POST['max-price'] !== '' ? (float)$_POST['max-price'] : 999999,
         "sort-type" => $_POST['sort'] ?? '',
@@ -23,7 +22,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     print_r($parameters);
 }
 ?>
+<!DOCTYPE html>
 
+<html lang="en">
 <head>
     <link rel="stylesheet" href="css/items.css">
     <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css" rel="stylesheet" type="text/css">
@@ -52,7 +53,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <input type="text" name="brand" id="brand" class="hiddenfields" value="">
                     <input type="number" name="min-price" id="min-price" class="hiddenfields">
                     <input type="number" name="max-price" id="max-price" class="hiddenfields">
-                    <button type="submit"><i class="fa fa-search"></i></button>
+                    <input type="submit" value="search">
+                    <button type="button" class="showfields" onclick="showItemFilters()">Advanced search</button>
 
                 </div>
 
@@ -87,7 +89,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </section>
 
     </div>
-    <script src="/js/main.js"></script>
+    <script src="./js/main.js"></script>
 </body>
 
 </html>

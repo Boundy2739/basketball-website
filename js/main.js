@@ -3,12 +3,12 @@ function openConfirm(action) {
     const noBtn = document.querySelectorAll(".btn-cancel");
     const buttonBox = document.querySelector(".last-confirmation-buttons");
     const pwdBox = document.querySelector(".hidden-pwd-box");
-    
+
     yesBtn.addEventListener("click", function () {
         buttonBox.style.display = "none";
         pwdBox.style.display = "block";
     });
-    
+
     const form = document.getElementById("confirmForm");
     const text = document.getElementById("confirmText");
     const actionInput = document.getElementById("confirmAction");
@@ -21,7 +21,7 @@ function openConfirm(action) {
             button.addEventListener("click", function () {
                 window.location.href = "stock.php";
             });
-            
+
         });
     }
 
@@ -31,7 +31,7 @@ function openConfirm(action) {
             button.addEventListener("click", function () {
                 window.location.href = "membersarea.php";
             });
-            
+
         });
     }
 
@@ -41,7 +41,26 @@ function openConfirm(action) {
 
     form.style.display = "block";
 }
+function showItemFilters() {
+    const hiddenFields = document.querySelectorAll(".hiddenfields");
 
 
+    hiddenFields.forEach(element => {
+        element.classList.toggle("hiddenfields")
+        element.classList.toggle("enabled")
+    })
+
+}
+
+function hideFilters() {
+    const enabledFields = document.querySelectorAll(".enabled");
+
+
+    enabledFields.forEach(element => {
+        element.classList.toggle("hiddenfields")
+        element.classList.toggle("enabled")
+    })
+
+}
 
 

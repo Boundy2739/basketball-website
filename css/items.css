@@ -80,7 +80,7 @@ ul {
 }
 
 /* Search field */
-.searchfields {
+.searchfield-container input {
     width: 10rem;
     padding: 6px;
     border: 1px solid #ffa25b;
@@ -90,7 +90,18 @@ ul {
     box-sizing: border-box;
 }
 
-.searchfield-container button {
+.searchfield-container select {
+    width: 10rem;
+    padding: 6px;
+    border: 1px solid #ffa25b;
+    background-color: #ffa25b;
+    border-radius: 6px;
+    font-size: 1rem;
+    outline: none;
+    box-sizing: border-box;
+}
+.searchfield-container button,
+.searchfield-container input[type="submit"] {
     padding: 6px 10px;
     border: 1px solid #ffa25b;
     background-color: #ffa25b;

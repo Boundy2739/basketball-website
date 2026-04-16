@@ -105,7 +105,7 @@ if (!empty($_POST['quantity'])) {
                 <h2>Description</h2>
             </button>
             <article class="description">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore quos magni accusantium, delectus culpa possimus error cum harum odio blanditiis porro quaerat eveniet molestias unde mollitia, ullam itaque doloremque facilis?</p>
+                <p><?php echo htmlentities($rows[0]['long_description'])?></p>
             </article>
 
         </section>
@@ -113,12 +113,9 @@ if (!empty($_POST['quantity'])) {
             <button class="collapsible">
                 <h2>More details</h2>
             </button>
-            <ul class="extra-details">
-                <li>Someting</li>
-                <li>Someone</li>
-                <li>Somewhere</li>
-                <li>Somehow</li>
-            </ul>
+            <article class="extra-details">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore quos magni accusantium, delectus culpa possimus error cum harum odio blanditiis porro quaerat eveniet molestias unde mollitia, ullam itaque doloremque facilis?</p>
+            </article>
         </section>
         <section class="product-reviews"></section>
         <section></section>
