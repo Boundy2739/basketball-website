@@ -1,6 +1,7 @@
 <?php
 require_once "../pdo.php";
 require '../functions/finduser.php';
+
 session_start();
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['username']) && isset($_POST['password'])) {
@@ -13,9 +14,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['authorised'] = TRUE;
 
             header('Location: membersarea.php');
-            exit;
-        } else {
-            header('Location: login_form.php');
             exit;
         }
     }

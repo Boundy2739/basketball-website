@@ -27,11 +27,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 if (file_exists($filePath)) {
                     unlink($filePath);
                 }
-            } else {
-                echo "<script>alert('Item deleted')</script>";
-                echo "<script>document.location = 'stock' </script>";
             }
-            echo "<script>alert('Item deleted " . $item['image'] . "')</script>";
+            echo "<script>alert('Item deleted " . $item['name'] . "')</script>";
             echo "<script>document.location = 'stock' </script>";
         }
     }

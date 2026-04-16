@@ -1,4 +1,5 @@
 <?php 
+require 'errormessages.php';
 function validate_names($name){
     if(!preg_match("/^[\p{L}'-]+$/u", $name)){
         return false;
@@ -9,7 +10,12 @@ function validate_names($name){
 }
 
 function validate_email($email){
-        return filter_var($email, FILTER_VALIDATE_EMAIL);
+    if(filter_var($email, FILTER_VALIDATE_EMAIL)){
+        return $email ;
+    }
+    else{
+        errorMessage("Invalid email","../staff-member-area/addmember.php");
+    }
 }
 
 function validate_integers($number){

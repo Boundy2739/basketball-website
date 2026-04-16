@@ -1,3 +1,6 @@
+body{
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+}
 .home-container {
     max-width: 1100px;
     margin: 50px auto;
@@ -257,153 +260,10 @@ a.btn2 {
     margin-bottom: 20px;
 }
 
-/* review form section*/
-.review-title {
+.error-message{
+    font-weight:bold;
+    background-color: rgba(255, 10, 10, 0.784);
+    padding:5px;
     text-align: center;
-}
-
-.star-div {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-}
-
-.star-wrap {
-    display: flex;
-    flex-direction: row-reverse;
-    justify-content: flex-end;
-    border: 0;
-}
-
-.star-wrap legend {
-    margin: auto;
-}
-
-.star-wrap input {
-    display: none;
-}
-
-.star-wrap label {
-    font-size: 2rem;
-    color: gray;
-    cursor: pointer;
-}
-
-/* hover effect */
-.star-wrap label:hover,
-.star-wrap label:hover~label {
-    color: gold;
-}
-
-/* checked effect */
-.star-wrap input:checked~label {
-    color: gold;
-}
-
-
-legend {
-    font-size: 1.5rem;
-    font-weight: bold;
-}
-
-.review-form {
-    display: grid;
-    background: #f5f5f5;
-    padding: 30px;
-    border-radius: 10px;
-    margin-bottom: 20px;
-}
-
-.review-form h2 {
-    color: #aa0404;
-    margin-bottom: 20px;
-}
-
-.review-form label {
-    display: block;
-    margin-top: 15px;
-    margin-bottom: 5px;
-    font-size: 1.5rem;
-    font-weight: bold;
-}
-
-.review-form input {
-    height: 20%;
-}
-
-.textarea-div {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    margin: auto;
-    width: 50%;
-}
-
-.review-form input,
-.review-form textarea {
-    padding: 10px;
-    border-radius: 6px;
-    border: 1px solid #ccc;
-    font-size: 0.95rem;
-}
-
-.review-form textarea {
-    resize: none;
-
-}
-
-.names-input-fields {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    align-items: baseline;
-}
-
-.review-form button {
-    margin-top: 20px;
-    padding: 12px;
-    border: none;
-    border-radius: 6px;
-    background-color: #e56b00;
-    color: white;
-    font-weight: bold;
-    cursor: pointer;
-    transition: 0.3s ease;
-    width: 30%;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.review-form button:hover {
-    background-color: #c55400;
-}
-
-.reviews-section {}
-
-.user-reviews-box {
-    margin: auto;
-    margin-bottom: 20px;
-    display: flex;
-    border-color: orangered;
-    border-width: 3px;
-    border-style: solid;
-    width: 40%;
-    padding: 10px;
-    border-radius: 10px;
-    flex-direction: column;
-}
-
-.review-header {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.user-review {
-    padding: 20px;
-    background-color: rgb(230, 230, 230);
-}
-
-.review-footer {
-    align-self: flex-end;
+    border-radius: 3px;
 }

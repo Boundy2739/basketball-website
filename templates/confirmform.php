@@ -12,6 +12,7 @@
     </div>
 
     <div class="hidden-pwd-box">
+        <?php displayError()?>
         <label>Password:</label>
         <input type="password" name="password" required>
 

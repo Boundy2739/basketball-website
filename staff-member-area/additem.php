@@ -11,6 +11,7 @@ requireAuthorisation();
 if (isset($_POST['item-name']) && isset($_POST['quantity']) && isset($_POST['price'])) {
 
     $image = validateImg($pdo, $_FILES['item-image']);
+    
     $sql = "INSERT INTO items (image,name,brand,surface,long_description,quantity,price) 
     VALUES (:image,:name,:brand,:surface,:long_desc, :quantity, :price)";
     echo ("<pre>\n" . $sql . "\n</pre>\n");

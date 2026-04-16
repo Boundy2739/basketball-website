@@ -3,6 +3,7 @@
 require '../templates/project_header.php';
 require '../templates/project_footer.php';
 require '../functions/userauthorisation.php';
+require '../functions/errormessages.php';
 
     title_bar("");
     session_start();
@@ -20,6 +21,7 @@ require '../functions/userauthorisation.php';
 <h2>Login</h2>
 
 <form method="POST" action="login.php" class="login-form">
+    <?php displayError()?>
     <label>Email</label>
     <input type="text" name="username" required>
 

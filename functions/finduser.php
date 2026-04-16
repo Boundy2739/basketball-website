@@ -1,4 +1,5 @@
-<?php 
+<?php
+require_once "../functions/errormessages.php"; 
 function findUserWithPwd($pdo, $email,$password)
 {
     $sql = "SELECT * FROM users WHERE email = :email";
@@ -9,6 +10,9 @@ function findUserWithPwd($pdo, $email,$password)
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
     if($user && password_verify($password, $user['password'])){
         return $user;
+    }
+    else{
+        errorMessage("Wrong email or password","login_form.php");
     }
     
 }
