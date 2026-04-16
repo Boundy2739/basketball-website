@@ -22,28 +22,33 @@ ul {
     grid-template-columns: repeat(4, 1fr);
     gap: 20px;
 }
-.items-list :hover{
-background-color: #ddd;
-transition-duration: 0.5s;
+
+.items-list :hover {
+    background-color: #ddd;
+    transition-duration: 0.5s;
 }
+
 .individual-item {
     list-style: none;
-    padding:20px;
+    padding: 20px;
     border-radius: 10px;
     box-shadow: 5px 5px 5px gray;
     background-color: rgba(255, 255, 0, 0.085);
-    
+
 }
-.item-name{
+
+.item-name {
     font-weight: bold;
     font-size: 1.2rem;
-    
+
 }
-.price{
+
+.price {
     font-weight: bold;
     font-size: 1.2rem;
-    
+
 }
+
 .items-list .individual-item article {
     text-align: center;
 }
@@ -75,25 +80,35 @@ transition-duration: 0.5s;
 }
 
 /* Search field */
-.searchfield-wrap {
-    width: fit-content;
-    display: flex;
-    border: 2.5px groove #191919;
-    border-radius: 2.75rem;
+.searchfields {
+    width: 10rem;
+    padding: 6px;
+    border: 1px solid #ffa25b;
+    border-radius: 6px;
+    font-size: 1rem;
+    outline: none;
+    box-sizing: border-box;
 }
 
-.searchfield-wrap button {
-    background: #ddd;
-    font-size: 17px;
-    border: none;
-    cursor: pointer;
-    border-radius: 0 2.75rem 2.75rem 0;
-}
-
-#searchfield {
-    border: none;
-    border-radius: 2.75rem 0 0 2.75rem;
+.searchfield-container button {
     padding: 6px 10px;
+    border: 1px solid #ffa25b;
+    background-color: #ffa25b;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.searchfield-container {
+    display: grid;
+    gap: 10px;
+    grid-template-columns: repeat(3, auto);
+    justify-content: start;
+
+}
+
+.hiddenfields{
+    display: none;
 }
 
 /* View button */
@@ -110,6 +125,7 @@ transition-duration: 0.5s;
     cursor: pointer;
     border-radius: 10px;
 }
+
 .viewbtn:hover {
     background: darkblue;
 }

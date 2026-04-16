@@ -52,6 +52,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <?php require_once '../templates/confirmform.php'; ?>
     <script src="../js/main.js"></script>
+    <script>openConfirm("delete_item")</script>
 </body>
 
 </html>

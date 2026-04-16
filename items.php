@@ -27,13 +27,26 @@ if (empty($_POST['searchfield']) && empty($_POST['minprice']) && empty($_POST['m
 
         <section class="header">
             <form method="POST">
-                <div class="searchfield-wrap">
-                    <input type="text" name="searchfield" id="searchfield" placeholder="Search">
+                <div class="searchfield-container">
+                    <input type="text" name="searchfield" id="searchfield" placeholder="Search" class="searchfields">
+                    <select name="surface" id="surface" class="hiddenfields">
+                        <option value="">All types</option>
+                        <option value="indoor">Indoor</option>
+                        <option value="outdoor">Outdoor</option>
+                        <option value="both">Indoor/Outdoor</option>
+                    </select>
+                    <select name="sort" id="sort" class="hiddenfields">
+                        <option value="">Sort by</option>
+                        <option value="price_low">Price: Low → High</option>
+                        <option value="price_high">Price: High → Low</option>
+                    </select>
+                    <input type="number" name="minprice" id="minprice" class="hiddenfields">
+                    <input type="number" name="maxprice" id="maxprice" class="hiddenfields">
                     <button type="submit"><i class="fa fa-search"></i></button>
+
                 </div>
 
-                <input type="number" name="minprice" id="minprice" style="display: none;">
-                <input type="number" name="maxprice" id="maxprice" style="display: none;">
+
             </form>
 
             <h1>Basketballs</h1>
@@ -66,4 +79,5 @@ if (empty($_POST['searchfield']) && empty($_POST['minprice']) && empty($_POST['m
     </div>
 
 </body>
+
 </html>
