@@ -45,8 +45,8 @@ if (isset($_POST['item-name']) && isset($_POST['quantity']) && isset($_POST['pri
         <div class="item-form-left">
             <label for="item-name">Item name:</label>
             <input type="text" name="item-name" id="item-name" required>
-            <label for="short-desc">Item short description:</label>
-            <textarea name="short-desc" id="short-desc"  placeholder="Please add item short decription" required></textarea>
+            <label for="brand">Brand:</label>
+            <input name="brand" id="brand"  placeholder="Please add item short decription" required placeholder="Brand name">
             <label for="long-desc">Item long description:</label>
             <textarea name="long-desc" id="long-desc"  placeholder="Please add item decription" required></textarea>
             <label for="quantity">Quantity:</label>

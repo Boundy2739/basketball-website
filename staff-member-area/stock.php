@@ -32,7 +32,7 @@ $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
                     <th>Image</th>
                     <th>Name</th>
-                    <th>Short Description</th>
+                    <th>Brand</th>
                     <th>Long Description</th>
                     <th>Quantity</th>
                     <th>Price</th>
@@ -52,7 +52,7 @@ $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         echo "</td><td>";
                         echo (htmlentities($row['name']));
                         echo "</td><td><div class='description-cell' style='width:100px'>";
-                        echo (htmlentities($row['short_description']));
+                        echo (htmlentities($row['brand']));
                         echo "</div></td>";
                         echo "<td><div class='description-cell' style='width:100px'>";
                         echo (htmlentities($row['long_description']));

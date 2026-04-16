@@ -88,8 +88,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <div class="item-form-left">
             <label for="itemname">Item name:</label>
             <input type="text" name="new-name" id="new-name" value="<?php echo htmlentities($item['name']) ?>">
-            <label for="new-short-desc">Short description:</label>
-            <textarea name="new-short-desc" id="new-short-desc" value="<?php echo htmlentities($item['short_description']) ?>"></textarea>
+            <label for="brand">Brand:</label>
+            <input name="brand" id="brand"  placeholder="Please add item short decription" required value="<?php echo htmlentities($item['brand']) ?>
             <label for="new-long-desc">Long description:</label>
             <textarea name="new-long-desc" id="new-long-desc" value="<?php echo htmlentities($item['long_description']) ?>"></textarea>
             <label for="quantity">Quantity:</label>

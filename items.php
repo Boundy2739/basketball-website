@@ -12,13 +12,15 @@ $stmt = $pdo->query("SELECT id, image, name, quantity, price FROM items");
 $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $parameters = array(
-        "item-name" => '',
+        "item-name" => $_POST['searchfield'],
         "item-brand" => '',
-        "min-price" => (float)0,
-        "max-price" => (float)99999,
-        "sort-type" => '',
+        "item-type" => $_POST['surface'] ?? '',
+        "min-price" => $_POST['min-price'] !== '' ? (float)$_POST['min-price'] : 0,
+        "max-price" => $_POST['max-price'] !== '' ? (float)$_POST['max-price'] : 999999,
+        "sort-type" => $_POST['sort'] ?? '',
     );
-    $results = search($parameters);
+    $rows = search($pdo, $parameters);
+    print_r($parameters);
 }
 ?>
 
@@ -47,8 +49,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <option value="price_low">Price: Low → High</option>
                         <option value="price_high">Price: High → Low</option>
                     </select>
-                    <input type="number" name="minprice" id="minprice" class="hiddenfields">
-                    <input type="number" name="maxprice" id="maxprice" class="hiddenfields">
+                    <input type="number" name="min-price" id="min-price" class="hiddenfields">
+                    <input type="number" name="max-price" id="max-price" class="hiddenfields">
                     <button type="submit"><i class="fa fa-search"></i></button>
 
                 </div>
