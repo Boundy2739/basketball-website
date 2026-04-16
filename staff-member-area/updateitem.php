@@ -1,6 +1,6 @@
 <?php
 session_start();
-if(isset($_SESSION['retrun_page'])){
+if (isset($_SESSION['retrun_page'])) {
     unset($_SESSION['retrun_page']);
 }
 require_once "../pdo.php";
@@ -22,54 +22,42 @@ if (isset($_GET['itemid'])) {
 }
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $_SESSION['retrun_page'] = '../staff-member-area/updateitems.php';
-    if (!empty($_POST['new-name'])) {
-        $sql = "UPDATE items
-                set name =:name
-                WHERE id =:id";
-        $stmt = $pdo->prepare($sql);
-        $stmt->execute(array(
-            ':id' => $_GET['itemid'],
-            ':name' => $_POST['new-name']
 
-        ));
+    $columns = [];
+    $parameters = [":id" => $_GET['itemid']];
+
+    if (!empty($_POST['new-name'])) {
+        array_push($columns, 'name =:name');
+        $parameters[':name'] = $_POST['new-name'];
     }
     if (!empty($_POST['new-price'])) {
-        $sql = "UPDATE items
-                set price =:price
-                WHERE id =:id";
-        $stmt = $pdo->prepare($sql);
-        $stmt->execute(array(
-            ':id' => $_GET['itemid'],
-            ':price' => $_POST['new-price']
-
-        ));
+        array_push($columns, 'price =:price');
+        $parameters[':price'] = $_POST['new-price'];
     }
     if (!empty($_POST['new-brand'])) {
-        $sql = "UPDATE items
-            set brand =:brand
-            WHERE id =:id";
-        $stmt = $pdo->prepare($sql);
-        $stmt->execute(array(
-            ':id' => $_GET['itemid'],
-            ':brand' => $_POST['new-brand']
+        array_push($columns, 'brand =:brand');
+        $parameters[':brand'] = $_POST['new-brand'];
+    }
 
-        ));
+    if (!empty($_POST['new-quantity'])) {
+        array_push($columns, 'quantity =:quantity');
+        $parameters[':quantity'] = $_POST['new-quantity'];
+    }
+
+    if (!empty($_POST['new-surface'])) {
+        array_push($columns, 'surface =:surface');
+        $parameters[':surface'] = $_POST['new-surface'];
     }
     if (!empty($_POST['new-long-desc'])) {
-        $sql = "UPDATE items
-            set long_description =:long_desc
-            WHERE id =:id";
-        $stmt = $pdo->prepare($sql);
-        $stmt->execute(array(
-            ':id' => $_GET['itemid'],
-            ':long_desc' => $_POST['new-long-desc']
 
-        ));
+        array_push($columns, 'long_description =:long_desc');
+        $parameters[':long_desc'] = $_POST['new-long-desc'];
     }
+    $sql = "UPDATE items set ".implode(', ',$columns) ." WHERE id =:id";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute($parameters);
     if (!empty($_FILES['new-image']['name'])) {
-        $result = update_img($pdo, $_POST['old-image'], $_FILES['new-image'], 
-        $item,'../staff-member-area/updateitem.php');
-        echo $result;
+        $result = update_img($pdo,$_POST['old-image'],$_FILES['new-image'],$item);
     }
 }
 
@@ -116,7 +104,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             ?>
             <input type="hidden" name="old-image" value="<?php echo $img ?>
         </div>
-        <div class="item-form-bottom">
+        <div class=" item-form-bottom">
             <label for="new-long-desc">Description:</label>
             <textarea name="new-long-desc" id="new-long-desc"><?php echo htmlentities($item['long_description']) ?></textarea>
             <input type="submit" value="Apply changes" class="confirm-buttons">
