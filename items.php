@@ -19,12 +19,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         "sort-type" => $_POST['sort'] ?? '',
     );
     $rows = search($pdo, $parameters);
-    print_r($parameters);
 }
 ?>
 <!DOCTYPE html>
 
 <html lang="en">
+
 <head>
     <link rel="stylesheet" href="css/items.css">
     <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css" rel="stylesheet" type="text/css">
@@ -34,36 +34,60 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body>
 
     <div class="main-grid">
-    <h1 class="title">Basketballs</h1>
+        <h1 class="title">Basketballs</h1>
         <section class="header">
-        
-            <form method="POST">
-                <div class="searchfield-container">
-                    <input type="text" name="searchfield" id="searchfield" placeholder="Search" class="searchfields">
-                    <select name="surface" id="surface" class="hiddenfields">
-                        <option value="">All types</option>
-                        <option value="indoor">Indoor</option>
-                        <option value="outdoor">Outdoor</option>
-                        <option value="both">Indoor/Outdoor</option>
-                    </select>
-                    <select name="sort" id="sort" class="hiddenfields">
-                        <option value="">Sort by</option>
-                        <option value="price_low">Price: Low → High</option>
-                        <option value="price_high">Price: High → Low</option>
-                    </select>
-                    <input type="text" name="brand" id="brand" class="hiddenfields" value="">
-                    <input type="number" name="min-price" id="min-price" class="hiddenfields">
-                    <input type="number" name="max-price" id="max-price" class="hiddenfields">
-                    <input type="submit" value="search">
-                    <button type="button" class="showfields" onclick="showItemFilters()">Advanced search</button>
-                    <button type="button" class="hiddenfields" onclick="hideFilters()">Hide advanced search</button>
 
-                </div>
+            <form method="POST">
+                <fieldset>
+                    <legend>Search filters</legend>
+                    <div class="searchfield-container">
+
+                        <div>
+                            <label for="searchfield">Item name</label>
+                            <input type="text" name="searchfield" id="searchfield" placeholder="Search by name" class="searchfields">
+                        </div>
+                        <div class="hiddenfields">
+                            <label for="surface">Surface type</label>
+                            <select name="surface" id="surface">
+                                <option value="">All types</option>
+                                <option value="indoor">Indoor</option>
+                                <option value="outdoor">Outdoor</option>
+                                <option value="both">Indoor/Outdoor</option>
+                            </select>
+                        </div>
+                        <div class="hiddenfields">
+                            <label for="sort">Sort by</label>
+                            <select name="sort" id="sort">
+                                <option value="">Sort by</option>
+                                <option value="price_low">Price: Low → High</option>
+                                <option value="price_high">Price: High → Low</option>
+                            </select>
+                        </div>
+                        <div class="hiddenfields">
+                            <label for="brand">Brand name</label>
+                            <input type="text" name="brand" id="brand">
+                        </div>
+                        <div class="hiddenfields">
+                            <label for="min-price">Minimum price</label>
+                            <input type="number" name="min-price" id="min-price">
+                        </div>
+                        <div class="hiddenfields">
+                            <label for="max-price">Maximum price</label>
+                            <input type="number" name="max-price" id="max-price">
+                        </div>
+                    </div>
+                    <div class="buttons-container">
+                        <input type="submit" value="search">
+                        <button type="button" class="showfields" onclick="showItemFilters()">Advanced search</button>
+                        <button type="button" class="hiddenfields" onclick="hideFilters()">Hide advanced search</button>
+                    </div>
+
+                </fieldset>
 
 
             </form>
 
-            
+
         </section>
 
         <section class="main-content">
