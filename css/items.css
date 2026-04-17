@@ -2,11 +2,12 @@ body{
     font-family: 'Segoe UI', Tahoma, sans-serif;
 }
 .main-grid {
+    margin-top: 40px;
     display: grid;
     grid-template-areas:
-        "header"
-        "content"
-        "footer";
+        "title title"
+        "header content"
+        "footer footer";
     grid-template-columns: 1fr;
     gap: 10px;
     padding: 5px;
@@ -14,6 +15,15 @@ body{
 
 
 /* Lists */
+.title{
+    grid-area: title;
+    text-align: center;
+}
+.main-content{
+    grid-area: content;
+    max-height: 600px;
+    overflow: auto;
+}
 ul {
     list-style: none;
     padding: 0;
@@ -116,7 +126,7 @@ ul {
 .searchfield-container {
     display: grid;
     gap: 10px;
-    grid-template-columns: repeat(3, auto);
+    grid-template-columns: repeat(2, auto);
     justify-content: start;
 
 }

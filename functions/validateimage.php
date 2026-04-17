@@ -10,10 +10,10 @@ function validateImg($pdo,$image)
         $file_info = new finfo(FILEINFO_MIME_TYPE);
         $mime_type = $file_info->file($tempname);
 
-        $allowed_images = ['image/jpg', 'image/jpeg', 'image/png', 'image/gif', 'image/x-gif'];
+        $allowed_images = ['image/jpg', 'image/jpeg', 'image/png', 'image/gif','image/avif','image/webp',];
 
         if (in_array($mime_type, $allowed_images) === false) {
-            errorMessage("Invalid image type, jpg/jpeg/png only",$_SESSION['return_page']);
+            errorMessage("Invalid image type jpg/jpeg/png only",$_SESSION['return_page']);
         }
         $max_size = 4 * 1024 * 1024;
 

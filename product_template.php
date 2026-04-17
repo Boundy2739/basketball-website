@@ -9,17 +9,17 @@ if (!isset($_GET['itemid'])) {
 } else {
     $stmt = $pdo->prepare("SELECT * FROM items where id = ?");
     $stmt->execute([$_GET['itemid']]);
-    $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $rows = $stmt->fetch(PDO::FETCH_ASSOC);
 }
 if (!empty($_POST['quantity'])) {
 
-    $_SESSION['cart'][$rows[0]['id']] = array(
-        'id' => $rows[0]['id'],
-        'product' => $rows[0]['name'],
+    $_SESSION['cart'][$rows['id']] = array(
+        'id' => $rows['id'],
+        'product' => $rows['name'],
         'quantity' => $_POST['quantity'],
-        'singleprice' => (float)$rows[0]['price'],
-        'totalprice' => (int)$_POST['quantity'] * (float)$rows[0]['price'],
-        'image' => $rows[0]['image'],
+        'singleprice' => (float)$rows['price'],
+        'totalprice' => (int)$_POST['quantity'] * (float)$rows['price'],
+        'image' => $rows['image'],
     );
     print_r(count($_SESSION['cart']));
     print_r($_SESSION['cart']);
@@ -42,18 +42,25 @@ if (!empty($_POST['quantity'])) {
         <section class="product-image">
             <figure>
                 <?php
-                echo '<img src="uploaded_images/' . $rows[0]['image'] . '" alt="ball">';
+                echo '<img src="uploaded_images/' . $rows['image'] . '" alt="ball image">';
                 ?>
             </figure>
         </section>
         <section class="product-details">
             <?php
+            echo '<div class="item-name">';
             echo '<h1>';
-            echo (htmlentities($rows[0]['name']));
+            echo (htmlentities($rows['name']));
             echo '</h1>';
+            echo '<p class="item-brand">';
+            echo (htmlentities($rows['brand']));
+            echo '</p>';
+            echo '</div>';
+            echo '<section class="price-section">';
             echo '<p class="price-paragraph">Price: <span class="price">';
-            echo (htmlentities('£'.$rows[0]['price']));
+            echo (htmlentities('£'.$rows['price']));
             echo '</span></p>';
+            
             ?>
 
             <div class="rating" aria-label="Rated 4.5 out of 5">
@@ -63,6 +70,7 @@ if (!empty($_POST['quantity'])) {
                 <span class="star half">★</span>
                 <span class="star empty">★</span>
             </div>
+            </section>
             <div class="options">
                 <form method="post">
                     <div class="buttons-wrap">
@@ -71,32 +79,7 @@ if (!empty($_POST['quantity'])) {
                         <input type="submit" id="cartbtn" value="add to cart">
                     </div>
                 </form>
-                <form method="post" action="additemreview.php">
-                    <button class="collapsible" id="reviewbtn">Write review</button>
-                    <div class="review-wrap">
-                        <label for="reviewer"></label>
-                        <input type="text" id="reviewer" name="reviewer" placeholder="Type your name" required>
-                        <div class="star-wrap">
-                            <label for="st-1">★</label>
-                            <label for="st-2">★</label>
-                            <label for="st-3">★</label>
-                            <label for="st-4">★</label>
-                            <label for="st-5">★</label>
-                            <input type="radio" id="st-1" value="1" name="star_radio" required />
-                            <input type="radio" id="st-2" value="2" name="star_radio" />
-                            <input type="radio" id="st-3" value="3" name="star_radio" />
-                            <input type="radio" id="st-4" value="4" name="star_radio" />
-                            <input type="radio" id="st-5" value="5" name="star_radio" />
-                        </div>
-                        <label for="reviewtext"></label>
-                        <textarea name="reviewtext" id="reviewtext"></textarea>
-                        <?php
-                        echo '<input type="hidden" name="itemID" value="' . $rows[0]['id'] . '">'
-                        ?>
 
-                        <button type="submit" id="reviewsubmit">send review</button>
-                    </div>
-                </form>
             </div>
         </section>
         <section class="product-description">
@@ -105,7 +88,7 @@ if (!empty($_POST['quantity'])) {
                 <h2>Description</h2>
             </button>
             <article class="description">
-                <p><?php echo htmlentities($rows[0]['long_description'])?></p>
+                <p><?php echo htmlentities($rows['long_description'])?></p>
             </article>
 
         </section>

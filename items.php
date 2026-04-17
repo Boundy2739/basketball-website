@@ -7,7 +7,7 @@ include 'searchfunction.php';
 title_bar("Basketballs");
 
 
-$stmt = $pdo->query("SELECT id, image, name, quantity, price FROM items");
+$stmt = $pdo->query("SELECT id, image, name,brand,surface, quantity, price FROM items");
 $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $parameters = array(
@@ -34,8 +34,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body>
 
     <div class="main-grid">
-
+    <h1 class="title">Basketballs</h1>
         <section class="header">
+        
             <form method="POST">
                 <div class="searchfield-container">
                     <input type="text" name="searchfield" id="searchfield" placeholder="Search" class="searchfields">
@@ -62,10 +63,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             </form>
 
-            <h1>Basketballs</h1>
+            
         </section>
 
-        <section class="main">
+        <section class="main-content">
             <ul class="items-list">
                 <?php
                 foreach ($rows as $row) {
@@ -75,13 +76,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     echo '<img src="uploaded_images/' . htmlentities($row['image']) . '" alt="Basketball item" style="width:100px">';
                     echo '<figcaption class="item-name">';
                     echo '<p>' . htmlentities($row['name']) . '</p>';
+                    echo '<p>' . htmlentities($row['brand']) . '</p>';
                     echo '</figcaption>';
                     echo '</figure>';
-                    echo '<div class="item-description">';
-                    echo '<p> Item desc</p>';
                     echo '<p class="price">£' . htmlentities($row['price']) . '</p>';
                     echo '<div><a href="product_template.php?itemid=' . $row['id'] . '" class="viewbtn">View product</a></div>';
-                    echo '</div>';
                     echo '</article>';
                     echo '</li>';
                 }
