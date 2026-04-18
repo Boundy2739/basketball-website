@@ -3,16 +3,20 @@ session_start();
 if(isset($_SESSION['retrun_page'])){
     unset($_SESSION['retrun_page']);
 }
+
 require_once "../pdo.php";
 require '../templates/project_header.php';
 require '../templates/project_footer.php';
 require '../functions/userauthorisation.php';
 require '../functions/validateinputs.php';
 require '../functions/validateimage.php';
+require'../functions/keepforminputs.php';
 title_bar("Stock");
 requireAuthorisation();
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
     if (isset($_POST['item-name']) && isset($_POST['quantity']) && isset($_POST['price'])) {
+        saveFormData();
+        print_r($_SESSION['form_data']);
         $_SESSION['retrun_page'] = '../staff-member-area/additem.php';
         $itemname = nameLength($_POST['item-name']);
         $brand = nameLength($_POST['brand']);
@@ -23,7 +27,9 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
     
         $sql = "INSERT INTO items (image,name,brand,surface,long_description,quantity,price) 
         VALUES (:image,:name,:brand,:surface,:long_desc, :quantity, :price)";
+        print_r($_SESSION['form_data']);
         echo ("<pre>\n" . $sql . "\n</pre>\n");
+        print_r($_SESSION['form_data']);
         $stmt = $pdo->prepare($sql);
         $stmt->execute(array(
             ':image' => $image,
@@ -34,6 +40,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
             ':quantity' => $quantity,
             ':price' => $price
         ));
+        deleteFormData();
     }
 }
 
@@ -58,9 +65,9 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
         <p class="error"><?php displayError();?></p>
         <div class="item-form-left">
             <label for="item-name">Item name:</label>
-            <input type="text" name="item-name" id="item-name" required>
+            <input type="text" name="item-name" id="item-name" required value="<?php echo restoreFormData(0) ?>">
             <label for="brand">Brand:</label>
-            <input name="brand" id="brand" placeholder="Please add item short decription" required placeholder="Brand name">
+            <input name="brand" id="brand" required placeholder="Brand name" value="<?php echo restoreFormData(1) ?>">
             <label for="surface">Surface type:</label>
             <select name="surface" id="surface" required>
                 <option value="">select type</option>
@@ -69,9 +76,9 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
                 <option value="both">both</option>
             </select>
             <label for="quantity">Quantity:</label>
-            <input type="number" name="quantity" id="quantity" required>
+            <input type="number" name="quantity" id="quantity" required value="<?php echo restoreFormData(3) ?>">
             <label for="price">Price:</label>
-            <input type="number" name="price" id="price" step="0.01" required>
+            <input type="number" name="price" id="price" step="0.01" required value="<?php echo restoreFormData(4) ?>">
         </div>
         <div class="item-form-right">
             <label for="item-image">Upload item image:</label>
@@ -79,7 +86,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
         </div>
         <div class="item-form-bottom">
             <label for="long-desc">Item long description:</label>
-            <textarea name="long-desc" id="long-desc" placeholder="Please add item decription" required></textarea>
+            <textarea name="long-desc" id="long-desc" placeholder="Please add item decription" required><?php echo restoreFormData(5) ?></textarea>
             <input type="submit" value="Add item" class="confirm-buttons">
         </div>
     </form>
