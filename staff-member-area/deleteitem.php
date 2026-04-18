@@ -1,11 +1,6 @@
 <?php
-session_start();
-require_once "../pdo.php";
-require '../templates/project_header.php';
-require '../functions/userauthorisation.php';
-require '../functions/finditembyid.php';
-require '../functions/validateimage.php';
-require '../functions/finduser.php';
+require_once '../config/config.php';
+$_SESSION['last_activity'] = time();
 title_bar("Stock");
 print_r($_SESSION);
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {

@@ -1,8 +1,6 @@
 <?php
-require_once "../pdo.php";
-require '../functions/userauthorisation.php';
-require '../templates/project_header.php';
-require '../functions/finduser.php';
+require_once '../config/config.php';
+$_SESSION['last_activity'] = time();
 title_bar("users");
 session_start();
 requireAuthorisation();

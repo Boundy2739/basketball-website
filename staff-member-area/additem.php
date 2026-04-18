@@ -1,18 +1,12 @@
 <?php
-session_start();
-if(isset($_SESSION['retrun_page'])){
+require_once '../config/config.php';
+if (isset($_SESSION['retrun_page'])) {
     unset($_SESSION['retrun_page']);
 }
-
-require_once "../functions/pdo.php";
-require '../templates/project_header.php';
-require '../functions/userauthorisation.php';
-require '../functions/validateinputs.php';
-require '../functions/validateimage.php';
-require'../functions/keepforminputs.php';
+$_SESSION['last_activity'] = time();
 title_bar("Stock");
 requireAuthorisation();
-if($_SERVER['REQUEST_METHOD'] === 'POST'){
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['item-name']) && isset($_POST['quantity']) && isset($_POST['price'])) {
         saveFormData();
         print_r($_SESSION['form_data']);
@@ -23,7 +17,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
         $image = validateImg($pdo, $_FILES['item-image']);
         $quantity = validate_integers($_POST['quantity']);
         $price = validate_floats($_POST['price']);
-    
+
         $sql = "INSERT INTO items (image,name,brand,surface,long_description,quantity,price) 
         VALUES (:image,:name,:brand,:surface,:long_desc, :quantity, :price)";
         print_r($_SESSION['form_data']);
@@ -59,14 +53,14 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 </head>
 
 <body>
-    <p>Add items </p>
+    <h1 class="title">Add items </h1>
     <form method="post" class="item-form" enctype="multipart/form-data">
-        <div class="error"><?php displayError();?></div>
+        <div class="error"><?php displayError(); ?></div>
         <div class="item-form-left">
             <label for="item-name">Item name:</label>
-            <input type="text" name="item-name" id="item-name" required value="<?php echo htmlspecialchars(restoreFormData('item-name',''),ENT_QUOTES, 'UTF-8') ?>">
+            <input type="text" name="item-name" id="item-name" required value="<?php echo htmlspecialchars(restoreFormData('item-name', ''), ENT_QUOTES, 'UTF-8') ?>">
             <label for="brand">Brand:</label>
-            <input name="brand" id="brand" required placeholder="Brand name" value="<?php echo htmlspecialchars(restoreFormData('brand',''),ENT_QUOTES, 'UTF-8')?>">
+            <input name="brand" id="brand" required placeholder="Brand name" value="<?php echo htmlspecialchars(restoreFormData('brand', ''), ENT_QUOTES, 'UTF-8') ?>">
             <label for="surface">Surface type:</label>
             <select name="surface" id="surface" required>
                 <option value="">select type</option>
@@ -75,9 +69,9 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
                 <option value="both">both</option>
             </select>
             <label for="quantity">Quantity:</label>
-            <input type="number" name="quantity" id="quantity" required value="<?php echo htmlspecialchars(restoreFormData('quantity',''),ENT_QUOTES, 'UTF-8') ?>">
+            <input type="number" name="quantity" id="quantity" required value="<?php echo htmlspecialchars(restoreFormData('quantity', ''), ENT_QUOTES, 'UTF-8') ?>">
             <label for="price">Price:</label>
-            <input type="number" name="price" id="price" step="0.01" required value="<?php echo htmlspecialchars(restoreFormData('price',''),ENT_QUOTES, 'UTF-8') ?>">
+            <input type="number" name="price" id="price" step="0.01" required value="<?php echo htmlspecialchars(restoreFormData('price', ''), ENT_QUOTES, 'UTF-8') ?>">
         </div>
         <div class="item-form-right">
             <label for="item-image">Upload item image:</label>
@@ -85,7 +79,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
         </div>
         <div class="item-form-bottom">
             <label for="long-desc">Item long description:</label>
-            <textarea name="long-desc" id="long-desc" placeholder="Please add item decription" required><?php echo htmlspecialchars(restoreFormData('long-desc',''),ENT_QUOTES, 'UTF-8')?></textarea>
+            <textarea name="long-desc" id="long-desc" placeholder="Please add item decription" required><?php echo htmlspecialchars(restoreFormData('long-desc', ''), ENT_QUOTES, 'UTF-8') ?></textarea>
             <input type="submit" value="Add item" class="confirm-buttons">
         </div>
     </form>

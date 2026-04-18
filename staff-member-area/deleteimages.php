@@ -1,6 +1,7 @@
 <?php
 require_once "../functions/pdo.php";
 require '../functions/userauthorisation.php';
+$_SESSION['last_activity'] = time();
 requireAuthorisation();
 if (isset($_GET['imageid'])){
     $id = (int) $_GET['imageid'];

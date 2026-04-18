@@ -1,5 +1,5 @@
 <?php
-require_once "../functions/errormessages.php"; 
+require_once "errormessages.php"; 
 function findUserWithPwd($pdo, $email,$password)
 {
     $sql = "SELECT * FROM users WHERE email = :email";

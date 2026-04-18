@@ -1,10 +1,7 @@
 <?php
-session_start();
-require_once "../functions/pdo.php";
-require '../templates/project_header.php';
-require '../functions/userauthorisation.php';
-require '../functions/validateinputs.php';
+require_once '../config/config.php';
 title_bar("Members area");
+$_SESSION['last_activity'] = time();
 
 requireAuthorisation();
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -47,9 +44,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 
 <body>
-    <p>Add A New User</p>
+    <h1 class="title">Add items </h1>
     <form method="post" class="login-form">
-    <?php displayError()?>
+        <?php displayError() ?>
         <label for="fname">Name:</label>
         <input type="text" name="fname" id="fname">
         <label for="lname">Surname:</label>

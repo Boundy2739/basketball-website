@@ -1,5 +1,5 @@
 <?php
-require_once "../functions/pdo.php";
+require_once '../config/config.php';
 session_start();
 $_SESSION = array();
 session_destroy();

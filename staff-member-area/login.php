@@ -1,8 +1,6 @@
 <?php
-require_once "../functions/pdo.php";
-require '../functions/finduser.php';
+require_once '../config/config.php';
 
-session_start();
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['username']) && isset($_POST['password'])) {
         $typed_email = $_POST['username'];

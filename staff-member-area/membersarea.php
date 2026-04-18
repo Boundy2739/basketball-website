@@ -1,8 +1,6 @@
 <?php
-session_start();
-require_once "../functions/pdo.php";
-require '../templates/project_header.php';
-require '../functions/userauthorisation.php';
+require_once '../config/config.php';
+$_SESSION['last_activity'] = time();
 title_bar("Members area");
 
 requireAuthorisation();
@@ -12,7 +10,6 @@ $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <html>
 
 <head>
-    <title>Home</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/style.css">

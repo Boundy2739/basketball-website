@@ -1,9 +1,6 @@
 <?php
-session_start();
-require_once "../functions/pdo.php";
-require '../templates/project_header.php';
-require '../functions/userauthorisation.php';
-require '../functions/renderimage.php';
+require_once '../config/config.php';
+$_SESSION['last_activity'] = time();
 title_bar("Stock");
 
 requireAuthorisation();

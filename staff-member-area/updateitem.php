@@ -1,16 +1,10 @@
 <?php
-session_start();
+require_once '../config/config.php';
 
 unset($_SESSION['retrun_page']);
 
-require_once "../functions/pdo.php";
-require '../templates/project_header.php';
-require '../functions/userauthorisation.php';
-require '../functions/validateinputs.php';
-require '../functions/validateimage.php';
-require '../functions/imageupdate.php';
-require '../functions/renderimage.php';
-require '../functions/keepforminputs.php';
+
+$_SESSION['last_activity'] = time();
 title_bar("Update stock");
 requireAuthorisation();
 if (isset($_GET['itemid'])) {
@@ -76,7 +70,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 
 <body>
-    <p>Add items </p>
+    <h1 class="title">Add items </h1>
     <form method="post" class="item-form" enctype="multipart/form-data">
         <div class="error"><?php displayError(); ?></div>
         <div class="item-form-left">
