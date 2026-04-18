@@ -12,6 +12,9 @@ $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <html>
 
 <head>
+    <title>Home</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/style.css">
 </head>
 
@@ -38,7 +41,7 @@ $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         echo (htmlentities($row['email']));
                         echo ("</td><td><div class='password-cell'>");
                         echo (htmlentities($row['password']));
-                        echo'</div></td>';
+                        echo '</div></td>';
                         echo ("<td>");
                         echo '<a class="btn2" href="deleteuser.php?deleteid=' . $row['email'] . '">Delete user</a>';
                         echo ("</td></tr>");

@@ -1,13 +1,12 @@
 <!doctype html>
 <?php 
 require './templates/project_header.php';
-title_bar("") ?>
+title_bar("Contact us") ?>
 
 <head>
-    <title>
-        hi
-    </title>
     <link rel="stylesheet" href="css/contact.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <body>
