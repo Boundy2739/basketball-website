@@ -41,13 +41,11 @@ if (isset($_SESSION['ip'], $_SESSION['user_agent'])) {
         exit;
     }
 }
-$idleTimer = 9;
+$idleTimer = 900;
 if (isset($_SESSION['last_activity']) && (time() - $_SESSION['last_activity']) > $idleTimer) {
     session_unset();
     session_destroy();
-    echo  "<script>alert('Your session has expired');</script>";
-    header('Location: ../staff-member-area/login_form.php');
-    exit;
+    errorMessage("Your session has expired", '../staff-member-area/login_form.php');
 }
 
 

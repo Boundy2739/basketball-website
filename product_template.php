@@ -1,9 +1,8 @@
 <?php require './templates/project_header.php';
 
-require 'pdo.php';
+require './functions/pdo.php';
 title_bar("Item");
 $_SESSION['cart'] = array();
-session_start();
 if (!isset($_GET['itemid'])) {
     die("Item not found");
 } else {
