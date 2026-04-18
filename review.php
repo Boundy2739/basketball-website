@@ -1,7 +1,6 @@
 <?php
 require_once "pdo.php";
 require './templates/project_header.php';
-require './templates/project_footer.php';
 title_bar("Reviews");
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {

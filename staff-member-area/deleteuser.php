@@ -2,7 +2,6 @@
 require_once "../pdo.php";
 require '../functions/userauthorisation.php';
 require '../templates/project_header.php';
-require '../templates/project_footer.php';
 require '../functions/finduser.php';
 title_bar("users");
 session_start();

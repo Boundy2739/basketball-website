@@ -1,7 +1,6 @@
 <!doctype html>
 <?php  
   require './templates/project_header.php';
-  require './templates/project_footer.php';
   title_bar("About Us");
 ?>
 <head>
@@ -47,5 +46,6 @@
     </div>
 
   </section>
+  <?php require './templates/project_footer.php'?>
 </body>
 </html>

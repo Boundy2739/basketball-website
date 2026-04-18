@@ -1,6 +1,5 @@
 <?php
 require './templates/project_header.php';
-require './templates/project_footer.php';
 require_once 'pdo.php';
 include 'searchfunction.php';
 
@@ -113,6 +112,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </section>
 
     </div>
+    <?php require './templates/project_footer.php'?>
     <script src="./js/main.js"></script>
 </body>
 

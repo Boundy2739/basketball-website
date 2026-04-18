@@ -1,8 +1,6 @@
 <!doctype html>
 <?php  
 require './templates/project_header.php';
-require './templates/project_footer.php';
-
 title_bar("Home");
 ?>
 
@@ -57,7 +55,7 @@ title_bar("Home");
 </main>
 
 <?php
-footer();
+require './templates/project_footer.php';
 ?>
 
 </body>

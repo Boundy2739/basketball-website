@@ -1,7 +1,6 @@
 <!doctype html>
 <?php 
 require './templates/project_header.php';
-require './templates/project_footer.php';
 title_bar("") ?>
 
 <head>
@@ -69,7 +68,7 @@ title_bar("") ?>
         </div>
 
     </div>
-
+    <?php require './templates/project_footer.php'?>
 </body>
 
 </html>

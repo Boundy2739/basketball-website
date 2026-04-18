@@ -8,7 +8,7 @@ function errorMessage($message,$redirect){
 }
 function displayError(){
     if(isset($_SESSION['error'])){
-        echo '<p class="error-message">'.$_SESSION['error'].'</p>';
+        echo '<p class="error-message">'.htmlspecialchars($_SESSION['error'], ENT_QUOTES, 'UTF-8').'</p>';
         unset($_SESSION['error']);
     }
 }

@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <?php  
 require '../templates/project_header.php';
-require '../templates/project_footer.php';
 require '../functions/userauthorisation.php';
 require '../functions/errormessages.php';
 
@@ -30,5 +29,6 @@ require '../functions/errormessages.php';
 
     <button type="submit" class="confirm-buttons">Login</button>
 </form>
+<?php require '../templates/project_footer.php'?>
 </body>
 </html>

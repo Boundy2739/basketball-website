@@ -2,7 +2,6 @@
 session_start();
 require_once "../pdo.php";
 require '../templates/project_header.php';
-require '../templates/project_footer.php';
 require '../functions/userauthorisation.php';
 require '../functions/renderimage.php';
 title_bar("Stock");

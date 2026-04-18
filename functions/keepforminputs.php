@@ -1,21 +1,15 @@
 <?php
-
 function saveFormData()
 {
-    deleteFormData();
-    $_SESSION['form_data'] = array();
-    foreach ($_POST as $data) {
-        array_push($_SESSION['form_data'], $data);
-    }
+    $_SESSION['form_data'] = $_POST;
 }
-function deleteFormData(){
-    if (isset($_SESSION['form_data'])) {
-        unset($_SESSION['form_data']);
-    }
-}
-function restoreFormData($data)
+
+function deleteFormData()
 {
-    if (isset($_SESSION['form_data'][$data])) {
-        return $_SESSION['form_data'][$data];
-    }
+    unset($_SESSION['form_data']);
+}
+
+function restoreFormData($key,$dbdata)
+{
+    return $_SESSION['form_data'][$key] ?? $dbdata;
 }

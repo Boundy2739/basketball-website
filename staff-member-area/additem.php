@@ -6,7 +6,6 @@ if(isset($_SESSION['retrun_page'])){
 
 require_once "../pdo.php";
 require '../templates/project_header.php';
-require '../templates/project_footer.php';
 require '../functions/userauthorisation.php';
 require '../functions/validateinputs.php';
 require '../functions/validateimage.php';
@@ -54,20 +53,20 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/forms.css">
+    <link rel="stylesheet" href="../css/style.css">
     <title>Document</title>
 </head>
 
 <body>
     <p>Add items </p>
     <form method="post" class="item-form" enctype="multipart/form-data">
-        <p class="error"><?php displayError();?></p>
+        <div class="error"><?php displayError();?></div>
         <div class="item-form-left">
             <label for="item-name">Item name:</label>
-            <input type="text" name="item-name" id="item-name" required value="<?php echo restoreFormData(0) ?>">
+            <input type="text" name="item-name" id="item-name" required value="<?php echo htmlspecialchars(restoreFormData('item-name',''),ENT_QUOTES, 'UTF-8') ?>">
             <label for="brand">Brand:</label>
-            <input name="brand" id="brand" required placeholder="Brand name" value="<?php echo restoreFormData(1) ?>">
+            <input name="brand" id="brand" required placeholder="Brand name" value="<?php echo htmlspecialchars(restoreFormData('brand',''),ENT_QUOTES, 'UTF-8')?>">
             <label for="surface">Surface type:</label>
             <select name="surface" id="surface" required>
                 <option value="">select type</option>
@@ -76,9 +75,9 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
                 <option value="both">both</option>
             </select>
             <label for="quantity">Quantity:</label>
-            <input type="number" name="quantity" id="quantity" required value="<?php echo restoreFormData(3) ?>">
+            <input type="number" name="quantity" id="quantity" required value="<?php echo htmlspecialchars(restoreFormData('quantity',''),ENT_QUOTES, 'UTF-8') ?>">
             <label for="price">Price:</label>
-            <input type="number" name="price" id="price" step="0.01" required value="<?php echo restoreFormData(4) ?>">
+            <input type="number" name="price" id="price" step="0.01" required value="<?php echo htmlspecialchars(restoreFormData('price',''),ENT_QUOTES, 'UTF-8') ?>">
         </div>
         <div class="item-form-right">
             <label for="item-image">Upload item image:</label>
@@ -86,7 +85,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
         </div>
         <div class="item-form-bottom">
             <label for="long-desc">Item long description:</label>
-            <textarea name="long-desc" id="long-desc" placeholder="Please add item decription" required><?php echo restoreFormData(5) ?></textarea>
+            <textarea name="long-desc" id="long-desc" placeholder="Please add item decription" required><?php echo htmlspecialchars(restoreFormData('long-desc',''),ENT_QUOTES, 'UTF-8')?></textarea>
             <input type="submit" value="Add item" class="confirm-buttons">
         </div>
     </form>
