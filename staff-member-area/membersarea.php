@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once "../pdo.php";
+require_once "../functions/pdo.php";
 require '../templates/project_header.php';
 require '../functions/userauthorisation.php';
 title_bar("Members area");

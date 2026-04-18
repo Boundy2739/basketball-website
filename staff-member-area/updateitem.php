@@ -3,9 +3,10 @@ session_start();
 
 unset($_SESSION['retrun_page']);
 
-require_once "../pdo.php";
+require_once "../functions/pdo.php";
 require '../templates/project_header.php';
 require '../functions/userauthorisation.php';
+require '../functions/validateinputs.php';
 require '../functions/validateimage.php';
 require '../functions/imageupdate.php';
 require '../functions/renderimage.php';

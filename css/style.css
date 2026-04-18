@@ -45,64 +45,6 @@ body{
     font-size: 0.95rem;
 }
 
-/*forms*/
-.login-form {
-    margin: auto;
-    background: #f5f5f5;
-    padding: 30px;
-    border-radius: 10px;
-    width: max-content;
-    display: flex;
-    flex-direction: column;
-}
-
-.login-form h2 {
-    color: #aa0404;
-    margin-bottom: 20px;
-}
-
-.login-form label {
-    display: block;
-    margin-top: 15px;
-    margin-bottom: 5px;
-    font-weight: bold;
-}
-
-.login-form input,
-.login-form textarea {
-    padding: 10px;
-    border-radius: 6px;
-    border: 1px solid #ccc;
-    font-size: 0.95rem;
-}
-
-.login-form textarea {
-    resize: none;
-}
-
-.confirm-buttons {
-    margin-top: 20px;
-    padding: 12px;
-    border: none;
-    border-radius: 6px;
-    background-color: #e56b00;
-    color: white;
-    font-weight: bold;
-    cursor: pointer;
-    transition: 0.3s ease;
-}
-
-.confir-buttons:hover {
-    background-color: #9e4500;
-}
-
-.page-redirect-buttons {
-    margin: auto;
-    width: fit-content;
-    display: flex;
-    flex-direction: row;
-    gap: 20px;
-}
 
 /*tables*/
 
@@ -255,6 +197,25 @@ a.btn2 {
     grid-template-columns: 150px 1fr;
 
 }
+.confirm-buttons {
+    margin-top: 20px;
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    background-color: #e56b00;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.page-redirect-buttons {
+    margin: auto;
+    width: fit-content;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+  }
 
 .form-container input {
     margin-bottom: 20px;

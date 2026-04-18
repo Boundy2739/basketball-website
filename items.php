@@ -1,7 +1,7 @@
 <?php
 require './templates/project_header.php';
-require_once 'pdo.php';
-include 'searchfunction.php';
+require_once './functions/pdo.php';
+require_once './functions/searchfunction.php';
 
 title_bar("Basketballs");
 
@@ -82,10 +82,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     </div>
 
                 </fieldset>
-
-
             </form>
-
 
         </section>
 
@@ -113,7 +110,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     </div>
     <?php require './templates/project_footer.php'?>
-    <script src="./js/main.js"></script>
+    <script src="js/main.js"></script>
 </body>
 
 </html>

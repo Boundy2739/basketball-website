@@ -1,5 +1,5 @@
 <?php
-require_once "../pdo.php";
+require_once "../functions/pdo.php";
 require '../functions/userauthorisation.php';
 requireAuthorisation();
 if (isset($_GET['imageid'])){

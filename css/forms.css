@@ -300,3 +300,84 @@ select {
     outline: none;
     box-sizing: border-box;
 }
+@media (max-width: 900px) {
+
+    .item-form {
+        width: 95%;
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "error"
+            "left"
+            "right"
+            "bottom";
+    }
+
+    .item-form-bottom textarea {
+        width: 100%;
+    }
+
+    .review-form button {
+        width: 60%;
+    }
+
+    .textarea-div {
+        width: 80%;
+    }
+
+    .login-form {
+        width: 90%;
+    }
+}
+
+/* Phones */
+@media (max-width: 600px) {
+
+    body {
+        padding: 10px;
+    }
+
+    .login-form {
+        width: 100%;
+        padding: 20px;
+    }
+
+    .review-form {
+        padding: 20px;
+    }
+
+    .names-input-fields {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+    }
+
+    .review-form button {
+        width: 100%;
+    }
+
+    .item-form {
+        padding: 20px;
+    }
+
+    .item-form-bottom textarea {
+        width: 100%;
+    }
+
+    .item-form-right {
+        gap: 10px;
+    }
+
+    select {
+        width: 100%;
+    }
+
+    .page-redirect-buttons {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .last-confirmation-buttons {
+        flex-direction: column;
+        gap: 10px;
+    }
+}

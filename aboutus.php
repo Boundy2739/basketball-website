@@ -1,23 +1,24 @@
 <!doctype html>
-<?php  
-  require './templates/project_header.php';
-  title_bar("About Us");
+<?php
+require './templates/project_header.php';
+title_bar("About Us");
 ?>
+
 <head>
   <title>About Us</title>
-  <link rel="stylesheet" href="css/aboutus.css">
-
+  <link rel="stylesheet" href="<?php echo BASE_URL; ?>css/aboutus.css">
 </head>
 
 <body>
   <section class="about-container">
 
     <div class="about-hero">
-      <img src="logo/01a9431c-1698-4922-913a-42ed3a706026.png" alt="Basketball Store">
+      <img src="<?php echo BASE_URL; ?>logo/01a9431c-1698-4922-913a-42ed3a706026.png" alt="Basketball Store">
+
       <div class="about-text">
         <h1>About Our Store</h1>
         <p>
-          We're more than a basketball store we're a community for players,
+          We're more than a basketball store — we're a community for players,
           fans, and hoop dreamers. From street courts to pro arenas, our mission
           is to bring you the best gear to elevate your game.
         </p>
@@ -46,6 +47,8 @@
     </div>
 
   </section>
-  <?php require './templates/project_footer.php'?>
+
+  <?php require './templates/project_footer.php'; ?>
 </body>
+
 </html>

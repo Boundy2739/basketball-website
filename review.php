@@ -1,5 +1,5 @@
 <?php
-require_once "pdo.php";
+require_once "./functions/pdo.php";
 require './templates/project_header.php';
 title_bar("Reviews");
 
@@ -49,10 +49,6 @@ $stmt = $pdo->query("SELECT firstname, lastname,subject, review, rating,created_
 $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
-
-
-
-
 <!DOCTYPE html>
 
 <html lang="en">
@@ -97,6 +93,7 @@ $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <label for="st-1">★</label>
                 </fieldset>
             </div>
+
             <div class="textarea-div">
                 <label for="review">Your reveiw:</label>
                 <textarea type="text" id="review" name="review" placeholder="Please add your review" required></textarea>
@@ -104,6 +101,7 @@ $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
             <button type="submit">post review</button>
         </form>
+
         <section class="reviews-section">
             <?php
             foreach ($rows as $row) {
@@ -117,10 +115,8 @@ $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 echo '</p>';
                 echo '<section>';
                 for ($x = 1; $x <= $row['rating']; $x++) {
-
                     echo '<span class="fa fa-star checked"></span>';
                 }
-
                 echo '</section></header>';
 
                 echo '<p class="user-review">';
@@ -136,7 +132,6 @@ $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
             }
             ?>
         </section>
-
 
 </body>
 

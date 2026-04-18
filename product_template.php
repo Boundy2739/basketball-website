@@ -1,5 +1,5 @@
 <?php require './templates/project_header.php';
-require './templates/project_footer.php';
+
 require 'pdo.php';
 title_bar("Item");
 $_SESSION['cart'] = array();
@@ -33,7 +33,7 @@ if (!empty($_POST['quantity'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="css/product_template.css">
+    <link rel="stylesheet" href="./css/product_template.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
@@ -123,7 +123,7 @@ if (!empty($_POST['quantity'])) {
         }
         let test = document.getElementById("st-5");
         if (test.checked) {
-            console.log("hiiiiiiiiii")
+            console.log()
         }
     </script>
 </body>

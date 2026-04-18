@@ -1,6 +1,6 @@
 <?php
 session_start();
-require 'project_header.php';
+require './templates/project_header.php';
 title_bar("Cart");
 $total = array();
 

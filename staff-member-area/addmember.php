@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once "../pdo.php";
+require_once "../functions/pdo.php";
 require '../templates/project_header.php';
 require '../functions/userauthorisation.php';
 require '../functions/validateinputs.php';
@@ -42,7 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/forms.css">
     <title>Document</title>
 </head>
 
