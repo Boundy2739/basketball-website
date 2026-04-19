@@ -12,12 +12,12 @@ title_bar("About Us");
 </head>
 
 <body>
-  <section class="about-container">
+  <main class="about-container" id="main">
 
-    <div class="about-hero">
+    <section class="about-hero">
       <img src="<?php echo BASE_URL; ?>logo/01a9431c-1698-4922-913a-42ed3a706026.png" alt="Basketball Store">
 
-      <div class="about-text">
+      <article class="about-text">
         <h1>About Our Store</h1>
         <p>
           We're more than a basketball store — we're a community for players,
@@ -28,8 +28,8 @@ title_bar("About Us");
           Founded by basketball lovers, we carefully select shoes, jerseys,
           accessories, and equipment trusted by athletes worldwide.
         </p>
-      </div>
-    </div>
+      </article>
+    </section>
 
     <div class="about-values">
       <div class="value-card">
@@ -48,7 +48,7 @@ title_bar("About Us");
       </div>
     </div>
 
-  </section>
+</main>
 
   <?php require './templates/project_footer.php'; ?>
 </body>

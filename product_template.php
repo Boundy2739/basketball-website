@@ -1,6 +1,6 @@
 <?php require './templates/project_header.php';
-
-require './functions/pdo.php';
+require_once './functions/pdo.php';
+require_once './functions/renderimage.php';
 title_bar("Item");
 $_SESSION['cart'] = array();
 if (!isset($_GET['itemid'])) {
@@ -37,11 +37,12 @@ if (!empty($_POST['quantity'])) {
 </head>
 
 <body>
-    <div class="container">
+    <main class="container" id="main">
         <section class="product-image">
             <figure>
                 <?php
-                echo '<img src="uploaded_images/' . $rows['image'] . '" alt="ball image">';
+                $img = renderImg($rows['image'],300,$rows['alt_name']);
+                echo $img;
                 ?>
             </figure>
         </section>
@@ -57,9 +58,9 @@ if (!empty($_POST['quantity'])) {
             echo '</div>';
             echo '<section class="price-section">';
             echo '<p class="price-paragraph">Price: <span class="price">';
-            echo (htmlentities('£'.$rows['price']));
+            echo (htmlentities('£' . $rows['price']));
             echo '</span></p>';
-            
+
             ?>
 
             <div class="rating" aria-label="Rated 4.5 out of 5">
@@ -69,17 +70,17 @@ if (!empty($_POST['quantity'])) {
                 <span class="star half">★</span>
                 <span class="star empty">★</span>
             </div>
-            </section>
-            <div class="options">
-                <form method="post">
-                    <div class="buttons-wrap">
-                        <label for="quantity">Quantity:</label>
-                        <input type="number" id="quantity" name="quantity">
-                        <input type="submit" id="cartbtn" value="add to cart">
-                    </div>
-                </form>
+        </section>
+        <div class="options">
+            <form method="post">
+                <div class="buttons-wrap">
+                    <label for="quantity">Quantity:</label>
+                    <input type="number" id="quantity" name="quantity">
+                    <input type="submit" id="cartbtn" value="add to cart">
+                </div>
+            </form>
 
-            </div>
+        </div>
         </section>
         <section class="product-description">
 
@@ -87,7 +88,7 @@ if (!empty($_POST['quantity'])) {
                 <h2>Description</h2>
             </button>
             <article class="description">
-                <p><?php echo htmlentities($rows['long_description'])?></p>
+                <p><?php echo htmlentities($rows['long_description']) ?></p>
             </article>
 
         </section>
@@ -101,7 +102,7 @@ if (!empty($_POST['quantity'])) {
         </section>
         <section class="product-reviews"></section>
         <section></section>
-    </div>
+    </main>
     <script>
         var coll = document.getElementsByClassName("collapsible");
         var i;

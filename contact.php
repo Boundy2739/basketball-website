@@ -1,5 +1,5 @@
 <!doctype html>
-<?php 
+<?php
 require './templates/project_header.php';
 title_bar("Contact us") ?>
 
@@ -11,10 +11,10 @@ title_bar("Contact us") ?>
 
 <body>
 
-    <div class="contact-container">
+    <section class="contact-container">
 
-        <div class="contact-hero">
-            <div class="contact-text">
+        <section class="contact-hero">
+            <div class="contact-text" id="main">
                 <h1>Contact Us</h1>
                 <p>
                     Have questions about our products? Need help with an order?
@@ -23,10 +23,9 @@ title_bar("Contact us") ?>
                 </p>
             </div>
             <img src="images/" alt="Contact us">
-        </div>
+        </section>
 
-        <!-- Contact Form Section -->
-        <div class="contact-content">
+        <section class="contact-content">
 
             <form method="post" action="send_message.php" class="contact-form">
                 <h2>Send a Message</h2>
@@ -46,28 +45,29 @@ title_bar("Contact us") ?>
                 <button type="submit" class="confirm-buttons">Send Message</button>
             </form>
 
-            <!-- Contact Info Cards -->
-            <div class="contact-info">
-                <div class="info-card">
+            <section class="contact-info">
+
+                <section class="info-card">
                     <h3>Email</h3>
                     <p>support@yoursite.com</p>
-                </div>
+                </section>
 
-                <div class="info-card">
+                <section class="info-card">
                     <h3>Phone</h3>
                     <p>+1 234 567 890</p>
-                </div>
+                </section>
 
-                <div class="info-card">
+                <section class="info-card">
                     <h3>Address</h3>
                     <p>123 Sports Street<br>New York, NY</p>
-                </div>
-            </div>
+                </section>
 
-        </div>
+            </section>
 
-    </div>
-    <?php require './templates/project_footer.php'?>
+        </section>
+
+    </section>
+    <?php require './templates/project_footer.php' ?>
 </body>
 
 </html>

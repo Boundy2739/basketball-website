@@ -2,7 +2,6 @@
 require_once '../config/config.php';
 $_SESSION['last_activity'] = time();
 title_bar("Stock");
-print_r($_SESSION);
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $verify = findUserWithPwd($pdo, $_SESSION['email'], $_POST['password']);
     if ($verify) {

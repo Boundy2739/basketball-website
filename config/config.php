@@ -45,7 +45,8 @@ $idleTimer = 900;
 if (isset($_SESSION['last_activity']) && (time() - $_SESSION['last_activity']) > $idleTimer) {
     session_unset();
     session_destroy();
-    errorMessage("Your session has expired", '../staff-member-area/login_form.php');
+    $_SESSION['error'] = "Your session has expired";
+    errorMessage($_SESSION['error'], '../staff-member-area/login_form.php');
 }
 
 

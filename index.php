@@ -13,9 +13,7 @@ title_bar("Home");
 
 <body>
 
-<header></header>
-
-<main class="home-container">
+<main class="home-container" id="main">
 
     <section class="home-intro">
         <h1>Hoop avenue</h1>

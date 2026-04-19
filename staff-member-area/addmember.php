@@ -45,7 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <body>
     <h1 class="title">Add items </h1>
-    <form method="post" class="login-form">
+    <form method="post" class="login-form" id="main">
         <?php displayError() ?>
         <label for="fname">Name:</label>
         <input type="text" name="fname" id="fname">

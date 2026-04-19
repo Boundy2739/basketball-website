@@ -15,13 +15,13 @@ require_once '../config/config.php';
 <body>
 <h1 class="title">Login </h1>
 
-<form method="POST" action="login.php" class="login-form">
+<form method="POST" action="login.php" class="login-form" id="main">
     <?php displayError()?>
-    <label>Email</label>
-    <input type="text" name="username" required>
+    <label for="username">Email</label>
+    <input type="text" name="username" id="username" required>
 
-    <label>Password</label>
-    <input type="password" name="password" required>
+    <label for="password">Password</label>
+    <input type="password" name="password" id="password" required>
 
     <button type="submit" class="confirm-buttons">Login</button>
 </form>

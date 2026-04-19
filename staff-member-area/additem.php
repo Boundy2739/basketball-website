@@ -54,7 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <body>
     <h1 class="title">Add items </h1>
-    <form method="post" class="item-form" enctype="multipart/form-data">
+    <form method="post" class="item-form" enctype="multipart/form-data" id="main">
         <div class="error"><?php displayError(); ?></div>
         <div class="item-form-left">
             <label for="item-name">Item name:</label>

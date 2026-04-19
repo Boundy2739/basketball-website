@@ -48,6 +48,7 @@
   }
   
   .footer-list a {
+
     text-decoration: none;
     color: #aa0404;
     transition: 0.3s ease;
@@ -62,4 +63,38 @@
     margin-bottom: 30px;
     color: #ccc;
     font-size: 0.95rem;
+  }
+
+
+  @media (max-width: 900px) {
+    .footer {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+  
+  }
+  
+  /* Mobile*/
+  @media (max-width: 600px) {
+    nav {
+      flex-wrap: wrap;
+      padding: 10px;
+      margin-left: auto;
+          margin-right: auto;
+    }
+  
+    nav a {
+      flex: 1 1 100%;
+      text-align: center;
+      height: auto;
+    }
+  
+    .logo {
+      margin-bottom: 10px;
+    }
+  
+    .logo img {
+      width: 48px;
+      height: 48px;
+    }
   }

@@ -2,7 +2,6 @@
 require_once '../config/config.php';
 $_SESSION['last_activity'] = time();
 title_bar("users");
-session_start();
 requireAuthorisation();
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $verify = findUserWithPwd($pdo, $_SESSION['email'], $_POST['password']);

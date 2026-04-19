@@ -17,7 +17,7 @@
             <article class="infos">
                 <h5>Informations</h5>
                 <ul class="footer-list">
-                    <li><a href="aboutus.php">About us</a></li>
+                    <li>About us</li>
                     <li>Opening hours</li>
                     <li>Privacy policy</li>
                     <li>FAQs</li>

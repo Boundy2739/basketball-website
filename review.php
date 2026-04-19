@@ -63,7 +63,7 @@ $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 </head>
 
 <body>
-    <section id="container">
+    <main id="container" id="main">
         <h1 class="review-title">Leave a review!</h1>
         <form method="post" class="review-form">
             <div class="names-input-fields">
@@ -131,7 +131,7 @@ $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 echo '</article>';
             }
             ?>
-        </section>
+        </main>
 
 </body>
 

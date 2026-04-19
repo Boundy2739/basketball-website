@@ -1,15 +1,7 @@
 function openConfirm(action) {
-    const yesBtn = document.querySelector(".btn-continue");
     const noBtn = document.querySelectorAll(".btn-cancel");
-    const buttonBox = document.querySelector(".last-confirmation-buttons");
-    const pwdBox = document.querySelector(".hidden-pwd-box");
 
-    yesBtn.addEventListener("click", function () {
-        buttonBox.style.display = "none";
-        pwdBox.style.display = "block";
-    });
 
-    const form = document.getElementById("confirmForm");
     const text = document.getElementById("confirmText");
     const actionInput = document.getElementById("confirmAction");
 

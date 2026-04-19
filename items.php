@@ -1,12 +1,13 @@
 <?php
 require './templates/project_header.php';
 require_once './functions/pdo.php';
+require_once './functions/renderimage.php';
 require_once './functions/searchfunction.php';
 
 title_bar("Basketballs");
 
 
-$stmt = $pdo->query("SELECT id, image, name,brand,surface, quantity, price FROM items");
+$stmt = $pdo->query("SELECT id, image, name,brand,surface, quantity, price,alt_name FROM items");
 $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $parameters = array(
@@ -34,9 +35,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <body>
 
-    <div class="main-grid">
+    <section class="main-grid" id="main">
         <h1 class="title">Basketballs</h1>
-        <section class="header">
+        <section class="searchbar">
 
             <form method="POST">
                 <fieldset>
@@ -95,7 +96,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     echo '<li class="individual-item">';
                     echo '<article>';
                     echo '<figure>';
-                    echo '<img src="uploaded_images/' . htmlentities($row['image']) . '" alt="Basketball item" style="width:100px">';
+                    $img = renderImg($row['image'],100,$row['alt_name']);
+                    echo $img;
                     echo '<figcaption class="item-name">';
                     echo '<p>' . htmlentities($row['name']) . '</p>';
                     echo '<p>' . htmlentities($row['brand']) . '</p>';
@@ -110,8 +112,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </ul>
         </section>
 
-    </div>
-    <?php require './templates/project_footer.php'?>
+    </section>
+    <?php require './templates/project_footer.php' ?>
     <script src="js/main.js"></script>
 </body>
 

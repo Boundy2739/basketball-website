@@ -9,9 +9,11 @@ function findUserWithPwd($pdo, $email,$password)
     ]);
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
     if($user && password_verify($password, $user['password'])){
+        reset_attempts($_SERVER['REMOTE_ADDR'], $pdo);
         return $user;
     }
     else{
+        rate_limiter($_SERVER['REMOTE_ADDR'], 5, $pdo);
         errorMessage("Wrong email or password","login_form.php");
     }
     
