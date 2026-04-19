@@ -16,7 +16,9 @@ function title_bar($title = "Hoop avenue")
     <body>
 
         <a href="#main" class="skip-link">Skip to main content</a>
-
+        <button class="hamburger" onclick="toggleMenu()">
+            ☰
+        </button>
         <nav>
 
             <a href="<?php echo BASE_URL; ?>index.php" class="logo">
