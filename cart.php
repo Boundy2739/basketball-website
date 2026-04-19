@@ -1,5 +1,4 @@
 <?php
-session_start();
 require './templates/project_header.php';
 title_bar("Cart");
 $total = array();

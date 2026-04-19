@@ -16,6 +16,7 @@ if (isset($_GET['itemid'])) {
     $item = $stmt->fetch(PDO::FETCH_ASSOC);
 }
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    saveFormData();
     $_SESSION['retrun_page'] = '../staff-member-area/updateitems.php';
 
     $columns = [];
@@ -24,6 +25,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (!empty($_POST['new-name'])) {
         array_push($columns, 'name =:name');
         $parameters[':name'] = $_POST['new-name'];
+    }
+
+    if (!empty($_POST['new-alt'])) {
+        array_push($columns, 'alt_name =:alt_name');
+        $parameters[':alt_name'] = $_POST['new-alt'];
     }
     if (!empty($_POST['new-price'])) {
         array_push($columns, 'price =:price');
@@ -54,6 +60,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (!empty($_FILES['new-image']['name'])) {
         $result = update_img($pdo, $_POST['old-image'], $_FILES['new-image'], $item);
     }
+    deleteFormData();
 }
 
 ?>
@@ -70,14 +77,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 
 <body>
-    <h1 class="title">Add items </h1>
+    <h1 class="title">Update items</h1>
     <form method="post" class="item-form" enctype="multipart/form-data" id="main">
         <div class="error"><?php displayError(); ?></div>
         <div class="item-form-left">
-            <label for="itemname">Item name:</label>
-            <input type="text" name="new-name" id="new-name" value="<?php echo htmlspecialchars(restoreFormData('brand', $item['name']), ENT_QUOTES, 'UTF-8') ?>">
+            <label for="new-name">Item name:</label>
+            <input type="text" name="new-name" id="new-name" value="<?php echo htmlspecialchars(restoreFormData('new-name', $item['name']), ENT_QUOTES, 'UTF-8') ?>">
+            <label for="new-alt">Item name:</label>
+            <input type="text" name="new-alt" id="new-alt" value="<?php echo htmlspecialchars(restoreFormData('new-alt', $item['alt_name']), ENT_QUOTES, 'UTF-8') ?>">
             <label for="new-brand">Brand:</label>
-            <input name="new-brand" id="new-brand" placeholder="Item brand" value="<?php echo htmlspecialchars(restoreFormData('brand', $item['brand']), ENT_QUOTES, 'UTF-8') ?>">
+            <input name="new-brand" id="new-brand" placeholder="Item brand" value="<?php echo htmlspecialchars(restoreFormData('new-brand', $item['brand']), ENT_QUOTES, 'UTF-8') ?>">
             <label for="new-surface">Surface type</label>
             <select name="new-surface" id="new-surface">
                 <option value="">select type</option>
@@ -85,16 +94,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <option value="outdoor">outdoor</option>
                 <option value="both">both</option>
             </select>
-            <label for="quantity">Quantity:</label>
-            <input type="number" name="new-quantity" id="new-quantity" value="<?php echo htmlspecialchars(restoreFormData('quantity', $item['quantity']), ENT_QUOTES, 'UTF-8') ?>">
-            <label for="price">Price:</label>
-            <input type="number" name="new-price" id="new-price" value="<?php echo htmlspecialchars(restoreFormData('price', $item['price']), ENT_QUOTES, 'UTF-8') ?>">
+            <label for="new-quantity">Quantity:</label>
+            <input type="number" name="new-quantity" id="new-quantity" value="<?php echo htmlspecialchars(restoreFormData('new-quantity', $item['quantity']), ENT_QUOTES, 'UTF-8') ?>">
+            <label for="new-price">Price:</label>
+            <input type="number" name="new-price" id="new-price" value="<?php echo htmlspecialchars(restoreFormData('new-price', $item['price']), ENT_QUOTES, 'UTF-8') ?>">
         </div>
         <div class="item-form-right">
-            <label for="item-image">Upload item image:</label>
+            <label for="new-image">Upload item image:</label>
             <input type="file" name="new-image" id="new-image">
             <?php
-            $img = renderImg($item['image'], 150);
+            $img = renderImg($item['image'],150,$item['alt_name']);
             echo $img;
             ?>
             <input type="hidden" name="old-image" value="<?php echo $img ?>

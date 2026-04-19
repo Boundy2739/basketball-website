@@ -1,3 +1,4 @@
+<main id="main">
 <form method="POST" action="" class="login-form" id="confirmForm">
 
     <h2 id="confirmText">Are you sure</h2>
@@ -8,10 +9,11 @@
 
     <?php displayError() ?>
     <label for="password">Password:</label>
-    <input type="password" name="password" required>
+    <input type="password" name="password" id="password"required>
     <div class="confirm-btn-flex">
         <button type="submit" id="confirmSubmit" class="confirm-buttons">Confirm</button>
         <button type="button" class="btn-cancel">Cancel</button>
     </div>
 
 </form>
+</main>

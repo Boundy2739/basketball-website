@@ -9,18 +9,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         isset($_POST['fname']) && isset($_POST['email'])
         && isset($_POST['password'])
     ) {
-        $_SESSION['retrun_page'] = '../staff-member-area/addmember.php';
+        $_SESSION['return_page'] = '../staff-member-area/addmember.php';
         $fname = validate_names($_POST['fname']);
+        $lname = validate_names($_POST['lname']);
         $passwordString = validate_passwords($_POST['password']);
         $email = validate_email($_POST['email']);
         if ($fname && $passwordString && $email) {
             $passwordHash = password_hash($passwordString, PASSWORD_DEFAULT);
-            $sql = "INSERT INTO users (name, email, password) 
-            VALUES (:name, :email, :password)";
+            $sql = "INSERT INTO users (name,surname, email, password) 
+            VALUES (:name, :surname,:email, :password)";
             echo ("<pre>\n" . $sql . "\n</pre>\n");
             $stmt = $pdo->prepare($sql);
             $stmt->execute(array(
                 ':name' => $fname,
+                ':surname' => $lname,
                 ':email' => $email,
                 ':password' => $passwordHash
             ));
@@ -44,7 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 
 <body>
-    <h1 class="title">Add items </h1>
+    <h1 class="title">Users</h1>
     <form method="post" class="login-form" id="main">
         <?php displayError() ?>
         <label for="fname">Name:</label>

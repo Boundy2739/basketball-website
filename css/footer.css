@@ -25,7 +25,7 @@
   }
   
   .infos h5 {
-    color: #e56b00;
+    color: #853E00;
     margin-bottom: 15px;
     font-size: 1.1rem;
   }
@@ -74,27 +74,6 @@
   
   }
   
-  /* Mobile*/
-  @media (max-width: 600px) {
-    nav {
-      flex-wrap: wrap;
-      padding: 10px;
-      margin-left: auto;
-          margin-right: auto;
-    }
+
+    
   
-    nav a {
-      flex: 1 1 100%;
-      text-align: center;
-      height: auto;
-    }
-  
-    .logo {
-      margin-bottom: 10px;
-    }
-  
-    .logo img {
-      width: 48px;
-      height: 48px;
-    }
-  }

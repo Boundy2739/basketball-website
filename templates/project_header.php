@@ -14,28 +14,29 @@ function title_bar($title = "Hoop avenue")
     </head>
 
     <body>
+    <script src="js/main.js"></script>
 
         <a href="#main" class="skip-link">Skip to main content</a>
-        <button class="hamburger" onclick="toggleMenu()">
-            ☰
-        </button>
-        <nav>
 
+        <nav class="navbar">
+            <button class="hamburger" onclick="toggleMenu()">
+                ☰
+            </button>
             <a href="<?php echo BASE_URL; ?>index.php" class="logo">
-                <img src="<?php echo BASE_URL; ?>logo/01a9431c-1698-4922-913a-42ed3a706026.png">
+                <img src="<?php echo BASE_URL; ?>logo/01a9431c-1698-4922-913a-42ed3a706026.png" alt="hoop avenue logo">
             </a>
-
-            <a href="<?php echo BASE_URL; ?>aboutus.php">About us</a>
-            <a href="<?php echo BASE_URL; ?>items.php">Basketballs</a>
-            <a href="<?php echo BASE_URL; ?>contact.php">Contact</a>
-            <a href="<?php echo BASE_URL; ?>review.php">Customer reviews</a>
-            <a href="<?php echo BASE_URL; ?>staff-member-area/login_form.php">Staff area</a>
-            <a href="<?php echo BASE_URL; ?>cart.php">
-                Cart <i class="fa fa-shopping-cart"></i>
-            </a>
+            <div id="nav-links">
+                <a href="<?php echo BASE_URL; ?>aboutus.php" class="nav-links">About us</a>
+                <a href="<?php echo BASE_URL; ?>items.php" class="nav-links">Basketballs</a>
+                <a href="<?php echo BASE_URL; ?>contact.php" class="nav-links">Contact</a>
+                <a href="<?php echo BASE_URL; ?>review.php" class="nav-links">Customer reviews</a>
+                <a href="<?php echo BASE_URL; ?>staff-member-area/login_form.php" class="nav-links">Staff area</a>
+                <a href="<?php echo BASE_URL; ?>cart.php" class="nav-links">
+                    Cart <i class="fa fa-shopping-cart"></i>
+                </a>
+            </div>
 
         </nav>
 
     <?php
 }
-    ?>

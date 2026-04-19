@@ -53,7 +53,7 @@ h1{
     border: none;
     border-radius: 6px;
     background-color: #e56b00;
-    color: white;
+    color: black;
     font-weight: bold;
     cursor: pointer;
     transition: 0.3s ease;
@@ -86,8 +86,8 @@ h1{
     padding: 12px;
     border: none;
     border-radius: 6px;
-    background-color: rgb(255, 0, 0);
-    color:white;
+    background-color: #FF1F1F;
+    color:black;
     font-weight: bold;
     cursor: pointer;
 }

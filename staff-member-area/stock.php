@@ -29,6 +29,7 @@ $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <tr>
                 <th>Image</th>
                 <th>Name</th>
+                <th>Alternative Name</th>
                 <th>Brand</th>
                 <th>Surface type</th>
                 <th>Long Description</th>
@@ -48,6 +49,8 @@ $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 echo $img;
                 echo "</td><td>";
                 echo (htmlentities($row['name']));
+                echo "</td><td>";
+                echo (htmlentities($row['alt_name']));
                 echo "</td><td>";
                 echo (htmlentities($row['brand']));
                 echo "</td><td>";

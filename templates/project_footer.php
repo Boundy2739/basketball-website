@@ -1,5 +1,4 @@
 <footer class="footer">
-    <p>footer</p>
     <div class="container">
         <section class="footer-infos">
             <article class="infos">

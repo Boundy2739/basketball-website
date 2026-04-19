@@ -1,11 +1,11 @@
 <?php 
 require 'errormessages.php';
 function validate_names($name){
-    if(!preg_match("/^[\p{L}'-]+$/u", $name)){
-        return false;
+    if(!preg_match("/^[\p{L}'-]+$/u", $name) || mb_strlen($name) > 50){
+        errorMessage("Invalid name",$_SESSION['return_page']);
     }
     else {
-        return true;
+        return $name;
     }
 }
 
@@ -39,7 +39,7 @@ function validate_passwords($password) {
     $pattern = "/^(?=.*[A-Z])(?=.*[\W_]).{8,}$/";
 
     if (!preg_match($pattern, $password)) {
-        return false;
+        errorMessage("Invalid password",$_SESSION['return_page']);
     }
 
     return $password;

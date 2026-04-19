@@ -59,6 +59,6 @@ function hideFilters() {
 
 
 function toggleMenu() {
-    document.getElementById("navLinks").classList.toggle("active");
+    document.getElementById("nav-links").classList.toggle("active");
 }
 

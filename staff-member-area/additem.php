@@ -12,14 +12,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         print_r($_SESSION['form_data']);
         $_SESSION['retrun_page'] = '../staff-member-area/additem.php';
         $itemname = nameLength($_POST['item-name']);
+        $altname = nameLength($_POST['alt-name']);
         $brand = nameLength($_POST['brand']);
         $description = descriptionLength($_POST['long-desc']);
         $image = validateImg($pdo, $_FILES['item-image']);
         $quantity = validate_integers($_POST['quantity']);
         $price = validate_floats($_POST['price']);
 
-        $sql = "INSERT INTO items (image,name,brand,surface,long_description,quantity,price) 
-        VALUES (:image,:name,:brand,:surface,:long_desc, :quantity, :price)";
+        $sql = "INSERT INTO items (image,name,alt_name,brand,surface,long_description,quantity,price) 
+        VALUES (:image,:name,:alt_name,:brand,:surface,:long_desc, :quantity, :price)";
         print_r($_SESSION['form_data']);
         echo ("<pre>\n" . $sql . "\n</pre>\n");
         print_r($_SESSION['form_data']);
@@ -59,6 +60,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <div class="item-form-left">
             <label for="item-name">Item name:</label>
             <input type="text" name="item-name" id="item-name" required value="<?php echo htmlspecialchars(restoreFormData('item-name', ''), ENT_QUOTES, 'UTF-8') ?>">
+            <label for="alt-name">Item name:</label>
+            <input type="text" name="alt-name" id="alt-name" required value="<?php echo htmlspecialchars(restoreFormData('alt-name', ''), ENT_QUOTES, 'UTF-8') ?>">
             <label for="brand">Brand:</label>
             <input name="brand" id="brand" required placeholder="Brand name" value="<?php echo htmlspecialchars(restoreFormData('brand', ''), ENT_QUOTES, 'UTF-8') ?>">
             <label for="surface">Surface type:</label>

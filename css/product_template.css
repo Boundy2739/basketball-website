@@ -78,7 +78,7 @@ h1 {
   font-family: 'Segoe UI', Tahoma, sans-serif;
   font-weight: 600;
   font-size: 1.3rem;
-  color: #dc3e00;
+  color: #C23A00;
 }
 
 .product-image img {
@@ -107,7 +107,7 @@ h1 {
 
 .rating {
   font-size: 1.2rem;
-  color: gold;
+  color: #856F00;
   grid-area: price-rating;
 }
 
