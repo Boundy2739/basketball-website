@@ -41,7 +41,7 @@ if (!empty($_POST['quantity'])) {
         <section class="product-image">
             <figure>
                 <?php
-                $img = renderImg($rows['image'],300,$rows['alt_name']);
+                $img = renderImg($rows['image'], 300, $rows['alt_name']);
                 echo $img;
                 ?>
             </figure>
@@ -96,9 +96,11 @@ if (!empty($_POST['quantity'])) {
             <button class="collapsible">
                 <h2>More details</h2>
             </button>
-            <article class="extra-details">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore quos magni accusantium, delectus culpa possimus error cum harum odio blanditiis porro quaerat eveniet molestias unde mollitia, ullam itaque doloremque facilis?</p>
-            </article>
+            <ul class="extra-details">
+                <li>Size: <?php echo htmlspecialchars($rows['size']) ?></li>
+                <li>Colour: <?php echo htmlspecialchars($rows['colour']) ?></li>
+                <li>Floor/Surface: <?php echo htmlspecialchars($rows['surface'])?></li>
+            </ul>
         </section>
         <section class="product-reviews"></section>
         <section></section>

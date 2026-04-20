@@ -9,7 +9,9 @@ function search($pdo, $parameters)
     AND price >= :minprice 
     AND price <= :maxprice
     AND brand LIKE :brand 
-    AND surface LIKE :surface ";
+    AND surface LIKE :surface
+    AND colour LIKE :colour
+    AND size LIKE :size ";
     $stmt = $pdo->prepare($sql);
     $stmt->execute(array(
         ':item' => '%' . $parameters["item-name"] . '%',
@@ -17,6 +19,8 @@ function search($pdo, $parameters)
         ':maxprice' => $parameters['max-price'],
         ':brand' => '%'.$parameters['item-brand'].'%',
         ':surface' => '%'.$parameters['surface'].'%',
+        ':size' => '%'.$parameters['size'].'%',
+        ':colour' => '%'.$parameters['colour'].'%',
     ));
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }

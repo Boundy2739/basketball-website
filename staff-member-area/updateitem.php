@@ -49,6 +49,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         array_push($columns, 'surface =:surface');
         $parameters[':surface'] = $_POST['new-surface'];
     }
+    if (!empty($_POST['new-colour'])) {
+        array_push($columns, 'colour =:colour');
+        $parameters[':colour'] = $_POST['new-colour'];
+    }
+    if (!empty($_POST['new-size'])) {
+        array_push($columns, 'size =:size');
+        $parameters[':size'] = $_POST['new-size'];
+    }
     if (!empty($_POST['new-long-desc'])) {
 
         array_push($columns, 'long_description =:long_desc');
@@ -75,7 +83,31 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <input type="text" name="new-alt" id="new-alt" value="<?php echo htmlspecialchars(restoreFormData('new-alt', $item['alt_name']), ENT_QUOTES, 'UTF-8') ?>">
         <label for="new-brand">Brand:</label>
         <input name="new-brand" id="new-brand" placeholder="Item brand" value="<?php echo htmlspecialchars(restoreFormData('new-brand', $item['brand']), ENT_QUOTES, 'UTF-8') ?>">
-        <label for="new-surface">Surface type</label>
+        <label for="new-size">Size:</label>
+            <select name="new-size" id="new-size">
+                <option value="">select size</option>
+                <option value=7>Size 7</option>
+                <option value="6">Size 6</option>
+                <option value="5">Size 5</option>
+                <option value="4">Size 4</option>
+            </select>
+            <label for="new-colour">Colour:</label>
+            <select name="new-colour" id="new-colour">
+                <option value="">select colour</option>
+                <option value="white">white</option>
+                <option value="red">red</option>
+                <option value="yellow">yellow</option>
+                <option value="green">green</option>
+                <option value="orange">orange</option>
+                <option value="black">black</option>
+                <option value="pink">pink</option>
+                <option value="blue">blue</option>
+                <option value="cyan">cyan</option>
+                <option value="gray">gray</option>
+                <option value="purple">purple</option>
+                <option value="themed">themed</option>
+            </select>
+        <label for="new-surface">Surface:</label>
         <select name="new-surface" id="new-surface">
             <option value="">select type</option>
             <option value="indoor">indoor</option>

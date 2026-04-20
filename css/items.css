@@ -104,7 +104,9 @@ ul {
 .searchfield-container div {
     margin: auto;
 }
-
+.searchbar{
+    max-width: 365px;
+}
 .searchfield-container select {
     width: 10rem;
     padding: 6px;

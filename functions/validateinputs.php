@@ -1,7 +1,7 @@
 <?php 
 require 'errormessages.php';
 function validate_names($name){
-    if(!preg_match("/^[\p{L}'-]+$/u", $name) || mb_strlen($name) > 50){
+    if(!preg_match("/^[\p{L}'-]+$/u", $name) || mb_strlen($name) > 100){
         errorMessage("Invalid name",$_SESSION['return_page']);
     }
     else {
@@ -60,6 +60,22 @@ function descriptionLength($description){
 }
 
 function validateSurfaceType($surface){
-    if(in_array(strtolower($surface), ['outdoor','indoor','both']));
-    return strtolower($surface);
+    if(in_array(strtolower($surface), ['outdoor','indoor','both'])){
+        return strtolower($surface);
+    };
+    errorMessage("Invalid surface type",$_SESSION['return_page']);
+}
+
+function validateColourName($colour){
+    if(in_array(strtolower($colour), ['black','white','yellow','green','red','blue','cyan','pink','purple','gray','themed'])){
+        return strtolower($colour);
+    };
+    errorMessage("Invalid colour",$_SESSION['return_page']);
+}
+
+function validateSize($size){
+    if(in_array(($size), [4,5,6,7])){
+        return ($size);
+    };
+    errorMessage("Invalid size",$_SESSION['return_page']);
 }

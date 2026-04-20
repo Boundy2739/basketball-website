@@ -21,6 +21,8 @@ $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <th>Name</th>
                 <th>Alternative Name</th>
                 <th>Brand</th>
+                <th>Colour</th>
+                <th>Size</th>
                 <th>Surface type</th>
                 <th>Long Description</th>
                 <th>Quantity</th>
@@ -31,29 +33,30 @@ $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
             <?php
             foreach ($rows as $row) {
-                if ($row['ratings'] == NULL) {
-                    $row['ratings'] = "No ratings!";
-                }
                 echo "<tr><td>";
                 $img = renderImg($row['image'],100,$row['alt_name']);
                 echo $img;
                 echo "</td><td>";
-                echo (htmlentities($row['name']));
+                echo (htmlentities($row['name'] ?? 'Missing detail!'));
                 echo "</td><td>";
-                echo (htmlentities($row['alt_name']));
+                echo (htmlentities($row['alt_name']?? 'Missing detail!'));
                 echo "</td><td>";
-                echo (htmlentities($row['brand']));
+                echo (htmlentities($row['brand']?? 'Missing detail!'));
                 echo "</td><td>";
-                echo (htmlentities($row['surface']));
+                echo (htmlentities($row['colour']?? 'Missing detail!'));
+                echo "</td><td>";
+                echo (htmlentities($row['size']?? 'Missing detail!'));
+                echo "</td><td>";
+                echo (htmlentities($row['surface']?? 'Missing detail!'));
                 echo "</td>";
                 echo "<td><div class='description-cell' tabindex='0' style='width:100px'>";
-                echo (htmlentities($row['long_description']));
+                echo (htmlentities($row['long_description']?? 'Missing detail!'));
                 echo "</div></td><td>";
-                echo (htmlentities($row['quantity']));
+                echo (htmlentities($row['quantity']?? 'Missing detail!'));
                 echo "</td><td>";
-                echo (htmlentities($row['price']));
+                echo (htmlentities($row['price']?? 'Missing detail!'));
                 echo "</td><td>";
-                echo (htmlentities($row['ratings']));
+                echo (htmlentities($row['ratings']?? 'Missing detail!'));
                 echo "</td><td>";
                 echo '<div class="options">';
                 echo '<a class="btn1" href="updateitem.php?itemid=' . urldecode($row['id']) . '">Update item</a>';
