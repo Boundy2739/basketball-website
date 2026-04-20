@@ -1,17 +1,8 @@
-<!doctype html>
+
 <?php  
 require './templates/project_header.php';
-title_bar("Home");
+title_bar("Home", $style = ['css/style.css']);
 ?>
-
-<head>
-    <title>Home</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
-</head>
-
-<body>
 
 <main class="home-container" id="main">
 
@@ -27,7 +18,7 @@ title_bar("Home");
     <section class="home-categories">
 
         <article class="home-card">
-            <h3>Shoes</h3>
+            <h2>Shoes</h2>
             <p>
                 Performance basketball shoes designed for grip,
                 speed and comfort on the court.
@@ -35,7 +26,7 @@ title_bar("Home");
         </article>
 
         <article class="home-card">
-            <h3>Clothing</h3>
+            <h2>Clothing</h2>
             <p>
                 Jerseys, shorts and training gear suitable for both
                 practice sessions and competitive games.
@@ -43,7 +34,7 @@ title_bar("Home");
         </article>
 
         <article class="home-card">
-            <h3>Equipment</h3>
+            <h2>Equipment</h2>
             <p>
                 Basketballs, pumps and accessories for indoor
                 and outdoor play.

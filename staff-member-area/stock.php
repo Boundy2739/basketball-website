@@ -1,7 +1,7 @@
 <?php
 require_once '../config/config.php';
 $_SESSION['last_activity'] = time();
-title_bar("Stock");
+title_bar("Stock",['css/style.css']);
 
 requireAuthorisation();
 
@@ -13,16 +13,6 @@ $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
 
-<html>
-
-<head>
-    <title>Stock</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/style.css">
-</head>
-
-<body>
 <section class="container" id="main">
     <table>
         <tbody>
@@ -56,7 +46,7 @@ $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 echo "</td><td>";
                 echo (htmlentities($row['surface']));
                 echo "</td>";
-                echo "<td><div class='description-cell' style='width:100px'>";
+                echo "<td><div class='description-cell' tabindex='0' style='width:100px'>";
                 echo (htmlentities($row['long_description']));
                 echo "</div></td><td>";
                 echo (htmlentities($row['quantity']));
@@ -66,8 +56,8 @@ $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 echo (htmlentities($row['ratings']));
                 echo "</td><td>";
                 echo '<div class="options">';
-                echo '<a class="btn1" href="updateitem.php?itemid=' . $row['id'] . '">Update item</a>';
-                echo '<a class="btn2" href="deleteitem.php?itemid=' . $row['id'] . '">Delete item</a>';
+                echo '<a class="btn1" href="updateitem.php?itemid=' . urldecode($row['id']) . '">Update item</a>';
+                echo '<a class="btn2" href="deleteitem.php?itemid=' . urldecode($row['id']) . '">Delete item</a>';
                 echo '</div>';
                 echo "</td></tr>";
             }
@@ -75,8 +65,7 @@ $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
         </tbody>
     </table>
 </section>
-        </div>
-    </section>
+
     <section class="page-redirect-buttons">
         <form method="POST" action="additem.php">
             <button type="submit" class="confirm-buttons">Add more items</button>
@@ -88,7 +77,7 @@ $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 
 
-
+    <script src="../js/main.js"></script>
 
 </body>
 

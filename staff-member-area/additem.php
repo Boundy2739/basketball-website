@@ -4,7 +4,7 @@ if (isset($_SESSION['retrun_page'])) {
     unset($_SESSION['retrun_page']);
 }
 $_SESSION['last_activity'] = time();
-title_bar("Stock");
+title_bar("Stock",['css/forms.css','css/style.css']);
 requireAuthorisation();
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['item-name']) && isset($_POST['quantity']) && isset($_POST['price'])) {
@@ -35,6 +35,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             ':price' => $price
         ));
         deleteFormData();
+        header('Location: stock.php');
+        exit;
     }
 }
 
@@ -42,18 +44,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/forms.css">
-    <link rel="stylesheet" href="../css/style.css">
-    <title>Document</title>
-</head>
-
-<body>
     <h1 class="title">Add items </h1>
     <form method="post" class="item-form" enctype="multipart/form-data" id="main">
         <div class="error"><?php displayError(); ?></div>
@@ -78,7 +68,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
         <div class="item-form-right">
             <label for="item-image">Upload item image:</label>
-            <input type="file" name="item-image" value="" id="item-image">
+            <input type="file" name="item-image"  id="item-image">
         </div>
         <div class="item-form-bottom">
             <label for="long-desc">Item long description:</label>
@@ -94,7 +84,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <button type="submit" class="confirm-buttons">Go back to member area</button>
         </form>
     </section>
-
+    <script src="../js/main.js"></script>
 </body>
 
 </html>

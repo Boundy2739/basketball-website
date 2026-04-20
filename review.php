@@ -26,12 +26,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             exit;
         }
 
-        if ($firstname === '') {
+        if ($firstname === '' && $lastname === '') {
             $firstname = "Anonymous";
+            $lastname = "User";
         }
-        if ($lastname === '') {
-            $lastname = "Uset";
-        }
+        
         $sql = "INSERT INTO reviews (firstname, lastname, review, rating,created_at)
                 VALUES (:reviewfname, :reviewlname, :review, :star_radio,:date)";
 
@@ -41,7 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             ':reviewlname'    => $lastname,
             ':review'      => $_POST['review'],
             ':star_radio'  => $rating,
-            ':date'  => date("Y-m-d H:i:s"),
+            ':date'  => date("Y-m-d"),
         ]);
     }
 }
@@ -119,7 +118,7 @@ $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 }
                 echo '</section></header>';
 
-                echo '<p class="user-review">';
+                echo '<p class="user-review" tabindex="0">';
                 echo (htmlentities($row['review']));
                 echo '</p>';
 

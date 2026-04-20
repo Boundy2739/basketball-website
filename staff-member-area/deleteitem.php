@@ -1,7 +1,8 @@
 <?php
 require_once '../config/config.php';
 $_SESSION['last_activity'] = time();
-title_bar("Stock");
+title_bar("Stock",['css/forms.css','css/style.css']);
+requireAuthorisation();
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $verify = findUserWithPwd($pdo, $_SESSION['email'], $_POST['password']);
     if ($verify) {
@@ -27,18 +28,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 ?>
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/forms.css">
-
-</head>
-
-<body>
 
     <?php require_once '../templates/confirmform.php'; ?>
     <script src="../js/main.js"></script>

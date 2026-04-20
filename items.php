@@ -4,7 +4,7 @@ require_once './functions/pdo.php';
 require_once './functions/renderimage.php';
 require_once './functions/searchfunction.php';
 
-title_bar("Basketballs");
+title_bar("Basketballs",['css/items.css']);
 
 
 $stmt = $pdo->query("SELECT id, image, name,brand,surface, quantity, price,alt_name FROM items");
@@ -21,19 +21,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $rows = search($pdo, $parameters);
 }
 ?>
-<!DOCTYPE html>
-
-<html lang="en">
-
-<head>
-    <link rel="stylesheet" href="css/items.css">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css" rel="stylesheet" type="text/css">
-    <title>Basketballs</title>
-</head>
-
-<body>
 
     <section class="main-grid" id="main">
         <h1 class="title">Basketballs</h1>
@@ -94,7 +81,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <?php
                 foreach ($rows as $row) {
                     echo '<li class="individual-item">';
-                    echo '<article>';
                     echo '<figure>';
                     $img = renderImg($row['image'],100,$row['alt_name']);
                     echo $img;
@@ -104,8 +90,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     echo '</figcaption>';
                     echo '</figure>';
                     echo '<p class="price">£' . htmlentities($row['price']) . '</p>';
-                    echo '<div><a href="product_template.php?itemid=' . $row['id'] . '" class="viewbtn">View product</a></div>';
-                    echo '</article>';
+                    echo '<div><a href="product_template.php?itemid=' . urlencode($row['id']) . '" class="viewbtn">View product</a></div>';
                     echo '</li>';
                 }
                 ?>
@@ -114,7 +99,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     </section>
     <?php require './templates/project_footer.php' ?>
-    <script src="js/main.js"></script>
+    
 </body>
 
 </html>

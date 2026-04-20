@@ -1,7 +1,7 @@
 <?php
 require_once __DIR__ . '/../config/config.php';
 
-function title_bar($title = "Hoop avenue")
+function title_bar($title = "Hoop avenue", $extra_css = [])
 {
 ?>
     <!DOCTYPE html>
@@ -11,10 +11,14 @@ function title_bar($title = "Hoop avenue")
         <title><?php echo htmlspecialchars($title, ENT_QUOTES, 'UTF-8'); ?></title>
         <link rel="stylesheet" href="<?php echo BASE_URL; ?>css/horizontal.css">
         <link rel="stylesheet" href="<?php echo BASE_URL; ?>css/footer.css">
+        <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css">
+        <?php foreach ($extra_css as $css) : ?>
+            <link rel="stylesheet" href="<?php echo BASE_URL . $css; ?>">
+        <?php endforeach; ?>
     </head>
 
     <body>
-    <script src="js/main.js"></script>
+        
 
         <a href="#main" class="skip-link">Skip to main content</a>
 

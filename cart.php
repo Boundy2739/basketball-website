@@ -1,6 +1,6 @@
-<?php
+<?php  
 require './templates/project_header.php';
-title_bar("Cart");
+title_bar("Cart", $style = ['css/cart.css']);
 $total = array();
 
 if (!empty($_SESSION['cart'])) {
@@ -10,20 +10,10 @@ if (!empty($_SESSION['cart'])) {
 
     $total = array_sum($total);
 
-    print_r($_SESSION['cart']); 
 }
 ?>
 
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/cart.css">
-    <title></title>
-</head>
-<body>
     <div class="container">
         <table border="1">
         <tr>

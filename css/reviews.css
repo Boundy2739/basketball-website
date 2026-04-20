@@ -137,6 +137,7 @@ legend {
     border-style: solid;
     width:  400px;
     height: 250px;
+    max-height:600px;
     padding: 10px;
     border-radius: 10px;
     flex-direction: column;
@@ -150,8 +151,11 @@ legend {
 }
 
 .user-review {
+    max-width:380px;
     padding: 20px;
     background-color: rgb(230, 230, 230);
+    overflow-y: auto;
+    word-wrap: break-word;
 }
 
 .review-footer {

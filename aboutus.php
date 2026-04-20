@@ -1,17 +1,7 @@
-<!doctype html>
 <?php
 require './templates/project_header.php';
-title_bar("About Us");
+title_bar("About Us",['css/aboutus.css']);
 ?>
-
-<head>
-  <title>About Us</title>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="<?php echo BASE_URL; ?>css/aboutus.css">
-</head>
-
-<body>
   <main class="about-container" id="main">
 
     <section class="about-hero">

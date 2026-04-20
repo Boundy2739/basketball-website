@@ -1,22 +1,12 @@
 <?php
 require_once '../config/config.php';
 $_SESSION['last_activity'] = time();
-title_bar("Members area");
+title_bar("Members area",['css/style.css']);
 
 requireAuthorisation();
 $stmt = $pdo->query("SELECT name,surname, email, password FROM users");
 $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
-<html>
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/style.css">
-</head>
-
-<body>
-
     <section class="container" id="main">
         <table>
             <tbody>
@@ -29,7 +19,7 @@ $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <th>Options</th>
 
                 </tr>
-                <tr>
+              
 
                     <?php
                     foreach ($rows as $row) {
@@ -48,7 +38,7 @@ $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     }
                     ?>
 
-                </tr>
+                
             </tbody>
         </table>
     </section>
@@ -65,6 +55,7 @@ $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
         </form>
 
     </section>
+    <script src="../js/main.js"></script>
 </body>
 
 </html>

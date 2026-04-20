@@ -61,7 +61,7 @@ ul {
 
 }
 
-.items-list .individual-item article {
+.items-list .individual-item  {
     text-align: center;
 }
 
@@ -162,4 +162,23 @@ ul {
 
 .viewbtn:hover {
     background: darkblue;
+}
+
+@media (max-width: 700px) {
+    .main-grid {
+        display: grid;
+        grid-template-areas:
+            "title title"
+            "header header"
+            "content content"
+            "footer footer";
+        grid-template-columns: 1fr;
+        gap: 10px;
+        padding: 5px;
+    }
+    .items-list {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
 }

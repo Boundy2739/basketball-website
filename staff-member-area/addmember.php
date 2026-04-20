@@ -1,6 +1,6 @@
 <?php
 require_once '../config/config.php';
-title_bar("Members area");
+title_bar("Members area",['css/forms.css']);
 $_SESSION['last_activity'] = time();
 
 requireAuthorisation();
@@ -35,17 +35,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/forms.css">
-    <title>Document</title>
-</head>
-
-<body>
     <h1 class="title">Users</h1>
     <form method="post" class="login-form" id="main">
         <?php displayError() ?>
@@ -62,6 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <form action="membersarea.php" method="post" class="page-redirect-buttons">
         <button type="submit" class="confirm-buttons">Go back to member area</button>
     </form>
+    <script src="../js/main.js"></script>
 </body>
 
 </html>

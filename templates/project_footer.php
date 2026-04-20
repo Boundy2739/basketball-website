@@ -2,7 +2,7 @@
     <div class="container">
         <section class="footer-infos">
             <article class="infos">
-                <h5>Unnamed basketball store</h5>
+                <h2>Unnamed basketball store</h2>
                 <address>
                     Some ltd group<br>
                     Unknown district<br>
@@ -14,7 +14,7 @@
             </article>
 
             <article class="infos">
-                <h5>Informations</h5>
+                <h2>Informations</h2>
                 <ul class="footer-list">
                     <li>About us</li>
                     <li>Opening hours</li>
@@ -26,7 +26,7 @@
             </article>
 
             <article class="infos">
-                <h5>Brands</h5>
+                <h2>Brands</h2>
                 <ul class="footer-list">
                     <li>Brand 1</li>
                     <li>Brand 2</li>
@@ -39,4 +39,4 @@
         </section>
     </div>
 </footer>
-  
+<script src="js/main.js"></script>

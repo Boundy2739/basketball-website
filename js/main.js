@@ -31,7 +31,6 @@ function openConfirm(action) {
         text.textContent = "Are you sure you want to update this item?";
     }
 
-    form.style.display = "block";
 }
 function showItemFilters() {
     const hiddenFields = document.querySelectorAll(".hiddenfields");

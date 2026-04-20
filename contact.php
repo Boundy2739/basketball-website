@@ -1,15 +1,7 @@
-<!doctype html>
+
 <?php
 require './templates/project_header.php';
-title_bar("Contact us") ?>
-
-<head>
-    <link rel="stylesheet" href="css/contact.css">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
-
-<body>
+title_bar("Contact us",['css/contact.css']) ?>
 
     <section class="contact-container">
 
@@ -22,7 +14,6 @@ title_bar("Contact us") ?>
                     get back to you as soon as possible.
                 </p>
             </div>
-            <img src="images/" alt="Contact us">
         </section>
 
         <section class="contact-content">

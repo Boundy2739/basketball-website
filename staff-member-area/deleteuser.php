@@ -1,36 +1,29 @@
 <?php
 require_once '../config/config.php';
 $_SESSION['last_activity'] = time();
-title_bar("users");
+title_bar("users",['css/forms.css','css/style.css']);
 requireAuthorisation();
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $verify = findUserWithPwd($pdo, $_SESSION['email'], $_POST['password']);
     if ($verify) {
         if (isset($_GET['deleteid'])) {
-            $user = $_GET['deleteid'];
-
-
-            $sql = "DELETE FROM users WHERE email= '$user'";
-            $stmt = $pdo->query($sql);
-            echo "<script>alert('User deleted')</script>";
-            echo "<script>document.location = 'membersarea' </script>";
+            $stmt=$pdo->prepare("SELECT * from users where email =:email");
+            $stmt->execute([":email"=>$_GET['deleteid']]);
+            $user =  $stmt->fetch(PDO::FETCH_ASSOC);
+            if($user){
+                $stmt = $pdo->prepare("DELETE FROM users WHERE email=:email");
+                $stmt->execute([":email"=>$user['email']]);
+                echo "<script>alert('User deleted: " . $user['name'] .' '.$user['surname']. "')</script>";
+                echo "<script>document.location = 'membersarea.php' </script>";
+            }
+            echo "<script>alert('This user does not exist ')</script>";
+            echo "<script>document.location = 'membersarea.php' </script>";
+            
         }
     }
 }
 
 ?>
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/forms.css">
-
-</head>
-
-<body>
 
     <?php require_once '../templates/confirmform.php'; ?>
     <script src="../js/main.js"></script>
