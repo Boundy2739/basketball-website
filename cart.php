@@ -32,15 +32,15 @@ if (!empty($_SESSION['cart'])) {
                     echo"</td><td>";
                     echo(htmlentities($item['quantity']));
                     echo"</td><td>";
-                    echo'<form method="post" action="updatecart.php">';
+                    echo'<form method="post" action="functions/updatecart.php">';
                     echo'<label for="'.$item['product'].'">Change quantity</label>';
                     echo'<input type="number" name="quantity"">';
-                    echo'<input type="hidden" name="product-id" value="'.$item['id'].'">';
+                    echo'<input type="hidden" name="product-id" value="'.urldecode($item['id']).'">';
                     echo'<input type="submit" value="confirm change"></form>';
                     echo"</td><td>";
                     echo(htmlentities("£ ".number_format($item['totalprice'],2)));
                     echo"</td><td>";
-                    echo '<a href="removeitemcart.php?itemid=' . $item['id'] . '">Remove item from cart</a>';
+                    echo '<a href="functions/removeitemcart.php?itemid=' . urldecode($item['id']) . '">Remove item from cart</a>';
                     echo"</td></tr>";
                 }
             } 
